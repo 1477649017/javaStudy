@@ -2,14 +2,14 @@
  * Created with IntelliJ IDEA.
  * Description:
  * User: 14776
- * Date: 2022-04-17
- * Time: 12:21
+ * Date: 2022-04-19
+ * Time: 11:59
  */
 public class TestDemo {
     public static void main(String[] args) {
-        System.out.println("hello bit");
+        int a = Integer.MAX_VALUE;
+        int b = Integer.MAX_VALUE + 1;
+        System.out.println(a);
+        System.out.println(b);
     }
-
-
-
 }
