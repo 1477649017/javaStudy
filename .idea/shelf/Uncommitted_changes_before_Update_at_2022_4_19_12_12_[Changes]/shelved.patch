@@ -1,0 +1,43 @@
+Index: src/TestDemo.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>/**\r\n * Created with IntelliJ IDEA.\r\n * Description:\r\n * User: 14776\r\n * Date: 2022-04-19\r\n * Time: 11:59\r\n */\r\npublic class TestDemo {\r\n    public static void main(String[] args) {\r\n        int a = Integer.MAX_VALUE;\r\n        int b = Integer.MAX_VALUE + 1;\r\n        System.out.println(a);\r\n        System.out.println(b);\r\n        System.out.println(\"hahaha\");\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/TestDemo.java b/src/TestDemo.java
+--- a/src/TestDemo.java	(revision 15282ce56857e66ae946779f43c5c4d23e366c44)
++++ b/src/TestDemo.java	(date 1650341548145)
+@@ -11,6 +11,6 @@
+         int b = Integer.MAX_VALUE + 1;
+         System.out.println(a);
+         System.out.println(b);
+-        System.out.println("hahaha");
++
+     }
+ }
+Index: .idea/.gitignore
+===================================================================
+diff --git a/.idea/.gitignore b/.idea/.gitignore
+deleted file mode 100644
+--- a/.idea/.gitignore	(revision 15282ce56857e66ae946779f43c5c4d23e366c44)
++++ /dev/null	(revision 15282ce56857e66ae946779f43c5c4d23e366c44)
+@@ -1,3 +0,0 @@
+-# Default ignored files
+-/shelf/
+-/workspace.xml
+Index: .idea/.name
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>test-4-17
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/.name b/.idea/.name
+--- a/.idea/.name	(revision 15282ce56857e66ae946779f43c5c4d23e366c44)
++++ b/.idea/.name	(date 1650341487352)
+@@ -1,1 +1,1 @@
+-test-4-17
+\ No newline at end of file
++test-4-19
+\ No newline at end of file
