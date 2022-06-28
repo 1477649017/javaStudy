@@ -1,3 +1,5 @@
+import org.omg.CORBA.INITIALIZE;
+
 /**
  * Created with IntelliJ IDEA.
  * Description:
@@ -60,8 +62,48 @@ public class SingleList {
 
     };
     //任意位置插入,第一个数据节点为0号下标
-    public boolean addIndex(int index,int data){
-        return false;
+    private boolean checkIndex(int index){
+        if(index < 0 || index > size()){
+            throw new IndexLegalException("插入下标不合法！");
+        }
+        return true;
+    }
+    public void addIndex(int index,int data){
+//        其他位置，先检验下标合法性
+        try{
+            if(index == 0){
+//        那就是头插
+                addFirst(data);
+                return;
+            }
+            if(index == size()){
+//            那就是尾插
+                addLast(data);
+                return;
+            }
+            if(checkIndex(index)){
+                Node node = new Node(50);
+                Node cur = this.head;
+                Node tmp1 = null;
+                Node tmp2 = null;
+                for(int i = 0;i <= index;i++){
+                    if(i == index -1){
+                        tmp1 = cur;
+                    }
+                    if(i == index){
+                        tmp2 = cur;
+                    }
+                    cur = cur.next;
+                }
+                tmp1.next = node;
+                node.next = tmp2;
+                return;
+            }
+
+        }catch (IndexLegalException e){
+            e.printStackTrace();
+        }
+
     };
     //查找是否包含关键字key是否在单链表当中
     public boolean contains(int key){
@@ -75,7 +117,13 @@ public class SingleList {
         return false;
     };
     //删除第一次出现关键字为key的节点
-    public void remove(int key){};
+    public void remove(int key){
+        Node cur = this.head;
+        while(cur.val != key){
+            cur = cur.next;//找到第一个为key的节点
+        }
+        
+    };
     //删除所有值为key的节点
     public void removeAllKey(int key){};
     //得到单链表的长度
@@ -91,11 +139,15 @@ public class SingleList {
     public void clear(){};
     public static void main(String[] args) {
         SingleList singleList = new SingleList();
-        //singleList.createList();
+        singleList.createList();
         singleList.displayList();
         System.out.println(singleList.contains(10));
         System.out.println(singleList.size());
-        singleList.addLast(50);
+        //singleList.addLast(50);
+
+        singleList.addIndex(2,50);
+        singleList.displayList();
+
     }
 }
 
