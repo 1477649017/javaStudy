@@ -1,10 +1,8 @@
-/**
- * Created with IntelliJ IDEA.
- * Description:
- * User: 14776
- * Date: 2022-07-11
- * Time: 15:28
- */
+import sun.reflect.generics.tree.Tree;
+
+import java.util.LinkedList;
+import java.util.Queue;
+
 public class BinaryTree {
     static class TreeNode{//二叉树的一个节点类
         public char val;
@@ -131,9 +129,102 @@ public class BinaryTree {
         if(root == null){
             return 0;
         }
-        if(k == 1){
+        if(k == 1){//k减到1的时候就是所谓的第k层
             return 1;
         }
         return getKLevelNodeCount(root.leftChild,k-1) + getKLevelNodeCount(root.rightChild,k-1);//左树第三层加上右树第三层
+        //注意传参不能是--k，因为你传k-1就只是传了值，--k把k自身的值改变了，你遍历完左树返回上一层k的值直接变了，影响右树的遍历
     }
+
+    // 获取第K层节点的个数
+    public static int kNodeCount = 0;
+    void getKLevelNodeCount2(TreeNode root,int k){
+        //遍历的思路
+        if(root == null){
+            return;
+        }
+        if(k == 1){//k减到1的时候就是所谓的第k层
+            kNodeCount += 1;//遇到就++
+        }
+        getKLevelNodeCount2(root.leftChild,k-1);
+        getKLevelNodeCount2(root.rightChild,k-1);
+        //注意传参不能是--k，因为你传k-1就只是传了值，--k把k自身的值改变了，你遍历完左树返回上一层k的值直接变了，影响右树的遍历
+    }
+
+    // 获取二叉树的高度
+    int getHeight(TreeNode root){
+    //子问题思路 左树高度 右树高度的最大值+1
+        if(root == null){
+            return 0;
+        }
+        return Math.max(getHeight(root.leftChild),getHeight(root.rightChild)) + 1;
+    }
+
+
+    // 检测值为value的元素是否存在
+    TreeNode find(TreeNode root, char val){
+        //子问题思路
+        if(root == null){
+            return null;
+        }
+        if(root.val == val){
+            return root;//根就是的情况，也就是找到了作为返回值
+        }
+        TreeNode leftTree = find(root.leftChild,val);//先找左树
+        if(leftTree != null){
+            return leftTree;//这个地方是不能return root的，因为每返回出一层,root都会变
+        }
+        TreeNode rightTree = find(root.rightChild,val);
+        if(rightTree != null){
+            return rightTree;
+        }
+        return null;
+    }
+
+    //层序遍历
+    void levelOrder(TreeNode root){
+        if(root == null){
+            return;//二叉树为空，那就直接return掉
+        }
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.offer(root);//首先就把root入队
+        while(!queue.isEmpty()){
+            TreeNode cur = queue.poll();//队头元素出队
+            System.out.print(cur.val + " ");//打印元素的值
+            if(cur.leftChild != null){
+                queue.offer(cur.leftChild);//如果cur的左孩子不为空就入队
+            }
+            if(cur.rightChild != null){
+                queue.offer(cur.rightChild);//如果cur的右孩子不为空就入队
+            }
+
+        }
+    }
+
+    // 判断一棵树是不是完全二叉树
+    boolean isCompleteTree(TreeNode root){
+        if(root == null){
+            return true;
+        }
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.offer(root);//首先就把root入队
+        while(!queue.isEmpty()){
+            TreeNode cur = queue.poll();//队头元素出
+            if(cur != null){
+                queue.offer(cur.leftChild);//左孩子入队,null也是能够入队的
+                queue.offer(cur.rightChild);//右孩子入队
+            }else{
+                break;//如果cur是空了就跳出循环
+            }
+        }
+        //跳出循环后继续判断，可能是也可能不是完全二叉树
+        while(!queue.isEmpty()){
+            if(queue.poll() != null){//如果继续出队元素的过程中遇到了不是null的元素，那就不是完全二叉树
+                return false;
+            }
+        }
+        return true;
+    }
+
+
 }
