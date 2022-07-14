@@ -1,5 +1,8 @@
+import jdk.internal.org.objectweb.asm.tree.AbstractInsnNode;
+
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Scanner;
 
 /**
  * Created with IntelliJ IDEA.
@@ -41,6 +44,21 @@ public class TestDemo220711 {
         System.out.println("======第K层节点的个数======");
         int klevelNum = binaryTree.getKLevelNodeCount(binaryTree.root,3);
         System.out.println(klevelNum);
+        binaryTree.getKLevelNodeCount2(binaryTree.root,3);
+        System.out.println(BinaryTree.kNodeCount);
+
+        System.out.println("======二叉树的高度======");
+        int height = binaryTree.getHeight(binaryTree.root);
+        System.out.println(height);
+
+        System.out.println("======查找值为vaule的节点======");
+        System.out.println(binaryTree.find(binaryTree.root,'E').val);
+
+        System.out.println("======层序遍历======");
+        binaryTree.levelOrder(binaryTree.root);
+
+        System.out.println("======判断是不是完全二叉树======");
+        System.out.println(binaryTree.isCompleteTree(binaryTree.root));
     }
 //    public static void main(String[] args) {
 //        // 子问题思路  获取树中节点的个数
