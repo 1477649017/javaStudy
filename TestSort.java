@@ -28,7 +28,7 @@ public class TestSort {
         long startTime = System.currentTimeMillis();//开始时间
         Sort.selectSort(array);
         long endTime = System.currentTimeMillis();//结束时间
-        System.out.println("直接插入排序用时：" + (endTime - startTime));
+        System.out.println("直接选择排序用时：" + (endTime - startTime));
     }
 
     public static void testSelectSort2(int[] array){
@@ -36,6 +36,27 @@ public class TestSort {
         Sort.selectSort2(array);
         long endTime = System.currentTimeMillis();//结束时间
         System.out.println("优化版直接选择排序用时：" + (endTime - startTime));
+    }
+
+    public static void testHeapSort(int[] array){
+        long startTime = System.currentTimeMillis();//开始时间
+        Sort.heapSort(array);
+        long endTime = System.currentTimeMillis();//结束时间
+        System.out.println("堆排序用时：" + (endTime - startTime));
+    }
+
+    public static void testBubbleSort(int[] array){
+        long startTime = System.currentTimeMillis();//开始时间
+        Sort.bubbleSort(array);
+        long endTime = System.currentTimeMillis();//结束时间
+        System.out.println("堆排序用时：" + (endTime - startTime));
+    }
+
+    public static void testQuickSort(int[] array){
+        long startTime = System.currentTimeMillis();//开始时间
+        Sort.quickSort(array);
+        long endTime = System.currentTimeMillis();//结束时间
+        System.out.println("快速排序用时：" + (endTime - startTime));
     }
 
     public static void initArrayOrder(int[] array){
@@ -58,6 +79,14 @@ public class TestSort {
         testShellSort(array);
         testSelectSort(array);
         testSelectSort2(array);
+        testHeapSort(array);
+
+        int[] array1 = new int[]{1,2,3,4,5};
+//        testBubbleSort(array1);//不要用太多数据测
+//        System.out.println(Arrays.toString(array1));
+//
+        testQuickSort(array);
+
 
     }
 }

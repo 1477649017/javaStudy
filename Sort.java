@@ -1,4 +1,6 @@
 import java.util.Arrays;
+import java.util.Comparator;
+import java.util.PriorityQueue;
 
 /**
  * Created with IntelliJ IDEA.
@@ -116,4 +118,132 @@ public class Sort {
         array[index2] = tmp;
     }
 
+    /*
+    * 堆排序
+    * */
+
+    public static void createBigHeap(int[] array){
+        for(int parent = (array.length-1-1)/2;parent >= 0;parent--){
+            shiftDown(array,parent, array.length);
+        }
+    }
+
+    public static void shiftDown(int[] array,int parent,int len){
+        int child = parent*2 + 1;
+        while(child < len){//起码有左孩子
+            if(child + 1 < len && array[child] < array[child + 1]){
+                child++;//找到较大的孩子的下标
+            }
+            if(array[child] > array[parent]){
+                swap(array,child,parent);//进行交换
+                parent = child;
+                child = 2*parent + 1;
+            }else{
+                break;
+            }
+        }
+    }
+    public static void heapSort(int[] array){
+        array = Arrays.copyOf(array,array.length);//拷贝一份
+        createBigHeap(array);//创建大根堆
+        int end = array.length - 1;
+        while(end > 0){
+            swap(array,0,end);
+            shiftDown(array,0,end);
+            end--;
+        }
+
+    }
+
+
+    /*
+    * 冒泡排序
+    * */
+    public static void bubbleSort(int[] array){
+        for(int i = 0;i < array.length -1;i++){
+            boolean flg = true;//假设有序了
+            for(int j = 0;j < array.length - 1 -i;j++){
+                if(array[j] > array[j+1]){
+                    swap(array,j,j+1);
+                    flg = false;
+                }
+            }
+            if(flg == true){
+                return ;
+            }
+        }
+    }
+
+    /*
+    * 快速排序
+    * */
+    //1,Hoare的分割交换函数
+    private static int partion(int[] array,int start,int end){//在[start,right]去寻找下一个分割点
+        int keyIndex = start;//记录下最初start的位置
+        int key = array[start];//每次的基准值等于左边1第一个元素
+        //并进行元素的交换
+        while(start < end){
+            //先走右边
+            while(start < end && array[end] >= key){
+                end--;
+            }
+            //走左边
+            while(start < end && array[start] <= key){
+                start++;
+            }
+            swap(array,start,end);
+        }
+        swap(array,keyIndex,start);//把最后相遇点的元素与基准值交换
+        return start;//返回我们的相遇点，也就是下一次的分割点下标
+    }
+
+    //2,挖坑法的分割交换函数
+    private static int partion1(int[] array,int start,int end){//在[start,right]去寻找下一个分割点
+        int key = array[start];//拿出左边元素形成一个坑位
+        //并进行元素的交换
+        while(start < end){
+            //先走右边
+            while(start < end && array[end] >= key){
+                end--;
+            }
+            array[start] = array[end];//后面找到了小于基准值的元素就换到前面来把坑填上，并且后面end处形成新的坑位
+            //走左边
+            while(start < end && array[start] <= key){
+                start++;
+            }
+            array[end] = array[start];
+        }
+        array[start] = key;//最后相遇了把key放到这个坑位
+        return start;//返回我们的相遇点，也就是下一次的分割点下标
+    }
+
+
+    //3,前后指针法
+    private static int partion2(int[] array,int start,int end){//在[start,right]去寻找下一个分割点
+        int key = array[start];//拿出左边元素形成一个坑位
+        //并进行元素的交换
+        int prev = start;
+        int cur = start+1;
+        while(cur <= end){
+           if(array[cur] < array[start] && array[++prev] != array[cur] ){
+               swap(array,prev,cur);
+           }
+           cur++;
+        }
+        swap(array,start,prev);
+        return prev;//返回我们的相遇点，也就是下一次的分割点下标
+    }
+
+    private static void quick(int[] array,int left,int right){//在[left,right]去进行分割
+        if(left >= right){
+            return ;
+        }
+        int divIndex = partion2(array,left,right);
+        quick(array,left,divIndex - 1);//递归对左半部分，右半部分进行分割
+        quick(array,divIndex + 1,right);
+    }
+    public static void quickSort(int[] array){
+        array = Arrays.copyOf(array,array.length);//拷贝一份
+        quick(array,0, array.length-1);
+    }
 }
