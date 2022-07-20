@@ -59,6 +59,20 @@ public class TestSort {
         System.out.println("快速排序用时：" + (endTime - startTime));
     }
 
+    public static void testQuickSort2(int[] array){
+        long startTime = System.currentTimeMillis();//开始时间
+        Sort.quickSort2(array);
+        long endTime = System.currentTimeMillis();//结束时间
+        System.out.println("快速排序用时(非递归)：" + (endTime - startTime));
+    }
+
+    public static void testMergeSort(int[] array){
+        long startTime = System.currentTimeMillis();//开始时间
+        Sort.mergeSort(array);
+        long endTime = System.currentTimeMillis();//结束时间
+        System.out.println("归并排序：" + (endTime - startTime));
+    }
+
     public static void initArrayOrder(int[] array){
         for(int i = 0;i < array.length;i++){
             array[i] = i;
@@ -81,12 +95,20 @@ public class TestSort {
         testSelectSort2(array);
         testHeapSort(array);
 
-        int[] array1 = new int[]{1,2,3,4,5};
+        int[] array1 = new int[]{9,4,3,10,3,12,99};
 //        testBubbleSort(array1);//不要用太多数据测
 //        System.out.println(Arrays.toString(array1));
 //
         testQuickSort(array);
+        //System.out.println(Arrays.toString(array1));
+        testQuickSort2(array);
+        //System.out.println(Arrays.toString(array1));
+        testMergeSort(array);
+        //System.out.println(Arrays.toString(array1));
+        Sort.mergeSort2(array1);
+        System.out.println(Arrays.toString(array1));
 
-
+        Sort.countSort(array1);
+        System.out.println(Arrays.toString(array1));
     }
 }
