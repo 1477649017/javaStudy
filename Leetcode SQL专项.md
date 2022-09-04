@@ -184,3 +184,76 @@ order by id;
 
 ***
 
+##  9，上升的温度
+
+[Leetcode](https://leetcode.cn/problems/rising-temperature/)
+
+```java
+select B.id from Weather A,Weather B where dateDiff(B.RecordDate,A.RecordDate) = 1 and B.Temperature > A.Temperature;
+-- dateDiff()函数可以计算两个日期之间的差值，也就是天数
+```
+
+这个题的解法就是自连接，因为要同一个表的行与行之间去进行比较。这里有个函数 dateDiff()可以计算两个日期之间的差值，也即是差的天数。
+
+***
+
+##  10，查看近30天的活跃用户数
+
+[Leetcode](https://leetcode.cn/problems/user-activity-for-the-past-30-days-i/)
+
+```java
+-- 近30天 6.28 - 7.27
+select activity_date as day,count(distinct user_id) as active_users from
+Activity where activity_date between "2019-06-28" and "2019-07-27" 
+group by activity_date;
+
+-- 这个题主要是注意题目意思
+-- 不要按照session_id来进行分组，只说一个session_id只属于一个用户，没有说一个用户就只能有一个session_id
+-- 时间范围可以用between and进行表示
+```
+
+这个题，首先你得把30天这个范围数清楚，是多少号到多少号，另外，这个时间范围可以用between and 来进行表示。
+
+***
+
+##  11，股票的资本损益
+
+[Leetcode](https://leetcode.cn/problems/capital-gainloss/)
+
+```java
+select stock_name,( sum(if(operation = 'Sell',price,0)) - sum(if(operation = 'Buy',price,0)) ) as capital_gain_loss from Stocks
+group by stock_name;
+```
+
+这道题就是利用基本的sum(if())函数加上分组的知识来进行解题。用最终卖出的价格减去买来用去的钱最终就是你的损益。
+
+***
+
+##  12，排名考前的旅行者
+
+[Leetcode](https://leetcode.cn/problems/top-travellers/)
+
+```java
+select name,ifnull(sum(distance),0) as travelled_distance from Users left join Rides on Users.id = Rides.user_id
+group by Rides.user_id
+order by travelled_distance desc,name;
+```
+
+左连接，保留了Users表中的所有name，因为要求是没有distance的人它的distance记作0，所以连接的时候要采用左连接，并且前面要利用一下ifnull()函数，如果不是空，那我们就计算这个人的distance的和，如果是空那结果就是0。最后再一个排序，这里的排序要用别名的那个，因为是计算的每个人的距离和。排序先是以travelled_distance作为标准降序排序，如果一样的，再以name为标准升序排序。
+
+***
+
+##  13，市场分析I
+
+[Leetcode](https://leetcode.cn/problems/market-analysis-i/)
+
+```java
+-- 必须使用左连接，因为可能有的客户是没有订单的但是也要展示出来
+select user_id as buyer_id,join_date,sum(if(year(order_date) = '2019',1,0)) as orders_in_2019
+from Users left join Orders 
+on user_id = buyer_id 
+group by user_id; 
+```
+
+***
+
