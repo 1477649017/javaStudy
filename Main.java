@@ -3,12 +3,49 @@ import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
 import java.util.*;
 
 public class Main{
-    public static void main(String[] args) {
-        float f = -412;
-        System.out.println(f);
-        int[] arr = new int[2];
-        for (int x:arr) {
-            break;
+    public static void main(String[] args){
+        //就是一个简单的分割问题，中间比较麻烦的就是需要处理下双引号中的空格的问题
+        Scanner scan = new Scanner(System.in);
+        String str = scan.nextLine();
+        //先求出参数的个数，这里注意，参数个数是空格数加1，当然这个空格不是双引号中的空格
+        int count = 0;
+        for(int i = 0;i < str.length();i++){
+            if(str.charAt(i) == '"'){
+                //如果这个字符是双引号，那就一直加加直到遇到第二个双引号
+                do{
+                    i++;
+                }while(str.charAt(i) != '"');//遇到第二个“就会跳出循环
+            }
+            if(str.charAt(i) == ' '){
+                //遇到了不是在双引号中的空格
+                count++;
+            }
+        }
+        System.out.println(count+1);
+        //开始进行分割
+        int flag = 0;//用来标记遇到了双引号
+        for(int i = 0;i < str.length();i++){
+            if(str.charAt(i) == '"'){
+                if(flag == 0){
+                    flag = 1;//说明是第一次遇到"
+                }else if(flag == 1){
+                    //说明这是遇到了与之前双引号匹配的第二个"
+                    flag = 0;//重新置为0，方便下次寻找
+                }
+            }
+            //双引号，以及不是双引号中的空格都是不需要输出的
+            if(str.charAt(i) != '"' && str.charAt(i) != ' '){
+                System.out.print(str.charAt(i));//先不输出换行
+            }
+            //等于空格还需要判断一下是双引号中的空格是需要输出的
+            if(str.charAt(i) == ' ' && flag == 1){
+                System.out.print(str.charAt(i));//把这个空格输出
+            }
+            if(str.charAt(i) == ' ' && flag == 0){
+                //遇到空格。但是这个空格不是双引号中的，所以不输出，并且要换行
+                System.out.println();
+            }
+
         }
 
     }
