@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>这是标签</title>
+</head>
+<body>
+    <!---这是注释-->
+    <!-- ctrl+/ 可以快速生成注释 -->
+    <!-- hello -->
+    <!-- 标签名+tab 可以快速生成标签 -->
+    <!-- <h1>一级标题</h1>
+    <h2>二级标题</h2>
+    <h3>三级标题</h3>
+    <h4>四级标题</h4>
+    <h5>五级标题</h5>
+    <h6>六级标题</h6>
+
+    <p>
+        这是一个段落1
+    </p>
+    <p>
+        这是一个段落2
+    </p>
+    <p>
+        这是一个段落3
+    </p>
+    <p>
+        随机生成字符串. Lorem ipsum dolor sit amet<br> 
+        consectetur adipisicing elit. Necessitatibus id, magni quis ipsa cupiditate<br>
+        consequuntur vitae? Porro optio officia dolorem amet cum vitae eos eveniet, et, quod fugiat inventore nemo.
+    </p>
+
+    <strong>这是加粗</strong>
+    <b>这是加粗</b>
+    <em>这是倾斜</em>
+    <i>这是倾斜</i>
+    <del>这是删除线</del>
+    <s>这是删除线</s>
+    <ins>这是下划线</ins>
+    <u>这是下划线</u> -->
+
+    <!-- <img src="d:/1.jpg" alt="" width="200px" height="200">
+    <img src="./1.jpg" alt="" width="200px" height="200">
+    <img src="https://tse1-mm.cn.bing.net/th/id/OIP-C.XvsrQw_Eml_jm4VOZ9jkwQHaLH?w=203&h=304&c=7&r=0&o=5&dpr=1.1&pid=1.7" alt="这是非常帅气的鸡哥" >     -->
+
+    <!-- 这是外部链接之间的跳转 -->
+    <!-- <a href="http://www.baidu.com">这是百度</a>
+    <a href="https://www.bilibili.com">这是B站</a> -->
+    <!-- 这是两个html文件之间跳转 -->
+    <!-- <a href="hello2.html">点击跳转到hello2.html</a> -->
+    <!-- 也可以是链接一个下载链接 -->
+    <!-- <a href="test.zip">下载文件</a> -->
+    <!-- 网页元素链接 给图片等元素添加链接 点击图片就可以进行跳转-->
+    <!-- <a href="http://www.baidu.com">
+        <img src="https://tse1-mm.cn.bing.net/th/id/OIP-C.XvsrQw_Eml_jm4VOZ9jkwQHaLH?w=203&h=304&c=7&r=0&o=5&dpr=1.1&pid=1.7" alt="">
+    </a> -->
+    <!-- 锚点标签，可以快速定位到页面中的某个内容 -->
+    <!-- <a href="#one">第一季度</a>
+    <a href="#two">第二季度</a> -->
+    <!-- <p id="one">
+        第一季度营业额xxxx
+    </p>
+    <p id="two">
+        第二季度营业额xxxx
+    </p> -->
+
+    <style>
+        /* css代码来设置文件水平居中 */
+        td{
+            
+            text-align: center;
+        }
+    </style>
+    <table width="500px" height="300px" border="2px">
+        <tr>
+            <!-- 这是一个表头单元格 -->
+            <th>
+                姓名
+            </th>
+            <th>
+                电话
+            </th>
+        </tr>
+        <tr>
+            <!-- 表示一个普通的单元格 -->
+            <td>
+                张三
+            </td>
+            <td>
+                111
+            </td>
+        </tr>
+        <tr>
+            <td>
+                李四
+            </td>
+            <td>
+                222
+            </td>
+        </tr>
+    </table>
+
+    <!-- <ol>
+        <li>张三</li>
+        <li>李四</li>
+        <li>王五</li>
+    </ol>
+
+    <ul>
+        <li>111</li>
+        <li>222</li>
+        <li>333</li>
+    </ul> -->
+
+    <!-- 单行文本输入框 -->
+    <input type="text">
+    <!-- 密码框，输入会用小圆点进行遮盖 -->
+    <!-- 网页上的某个登录界面密码忘了就可以把页面密码的这个属性改成text就可以看到密码了 -->
+    <input type="password">
+    <!-- 单选框 -->
+    <!-- checked="checked"表示默认选中 -->
+    <input type="radio" name="gender" id="male" checked="checked"><label for="male">男</label>
+    <input type="radio" name="gender" id="female"><label for="female">女</label>
+
+    <!-- 复选框 就是可以选择多个-->
+    <!-- 同样可以使用上面单选框的属性 -->
+    <input type="checkbox" id="1"><label for="1">吃饭</label>
+    <input type="checkbox">睡觉
+    <input type="checkbox">打豆豆
+
+    <!-- 普通按钮 -->
+    <!-- alert()是js语法 -->
+    <input type="button" value="这是按钮" onclick="alert('hello!')">
+
+    <!-- 提交按钮 -->
+    <input type="submit" value="提交按钮">
+
+    <!-- 选择文件 -->
+    <input type="file">
+
+    <br>
+    <select>
+        <option selected="selected">中国</option>
+        <option>美国</option>
+        <option>英国</option>
+    </select>
+
+    <br>
+    <!-- 可以写多少行，一行可以写多少 -->
+    <textarea cols="30" rows="10"></textarea>
+</body>
+</html>
