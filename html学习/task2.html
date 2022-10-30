@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>排行榜</title>
+
+    <style>
+        #rank-list td {
+            font-size: 1.1em;
+            padding-top: 3px;
+            padding-bottom: 3px;
+		}
+        a {
+            /* 消除下划线 */
+            text-decoration: none;
+            color: blue;
+        }
+        .boil {
+            background-color: red;
+            color: white;
+            border-radius: 5px;
+            font-size: 0.5em;
+            padding: 1px;
+        }
+
+        .hot {
+            background-color: coral;
+            color: white;
+            border-radius: 5px;
+            font-size: 0.5em;
+            padding: 1px 2px 1px 2px;
+        }
+
+        .new {
+            background-color: orange;
+            color: white;
+            border-radius: 5px;
+            font-size: 0.5em;
+            padding: 1px 2px 1px 2px;
+        }
+        
+
+        .num {
+            color: darkgray;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <table id="rank-list">
+            <tr>
+                <td>
+                    <span><img src="./top.png" alt="" width="20px"></span>
+                </td>
+                <td>
+                    <a href="#">中国空间站第三棒全力开跑 <span></span></a>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="num">
+                    <span style="color: red;">1</span>
+                </td>
+                <td>
+                    <a href="#">#2022高考作文来了# <span class="boil">沸</span></a>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="num">
+                    <span style="color: coral;">2</span>
+                </td>
+                <td>
+                    <a href="#">深圳回应“50辆宾利堵车位”纠纷 <span class="hot">热</span></a>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="num">
+                    <span style="color: orange;">3</span>
+                </td>
+                <td>
+                    <a href="#">回头看高考，青春永不老<span class="hot">热</span></a>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="num">
+                    <span>4</span>
+                </td>
+                <td>
+                    <a href="#">利川新晋首富李忝兴</a>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="num">
+                    <span>5</span>
+                </td>
+                <td>
+                    <a href="#">周杰伦又又又出新歌了！<span class="new">新</span></a>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="num">
+                    <span>6</span>
+                </td>
+                <td>
+                    <a href="#">XXXXXXXXXX</a>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="num">
+                    <span>7</span>
+                </td>
+                <td>
+                    <a href="#">XXXXXXXXXX</a>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="num">
+                    <span>8</span>
+                </td>
+                <td>
+                    <a href="#">XXXXXXXXXX <span class="new">新</span></a>
+                </td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>
