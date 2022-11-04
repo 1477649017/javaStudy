@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>calculator</title>
+</head>
+<body>
+    <style>
+        table {
+            border: 2px;
+            border-style: solid;
+            color: black;
+        }
+        button {
+            font-size: large;
+            width: 50px;
+            height: 50px;
+            border-radius: 25px;
+            border: none;
+        }
+        
+        #operator {
+            font-weight: bold;
+            color: blue;
+        }
+        input {
+            width: 210px;
+            border: 4px;
+            border-style: solid;
+        }
+        
+    </style>
+    <input type="text" id="theText" >
+    <table>
+        <tr>
+            <td>
+                <button id="operator">C</button>
+            </td>
+            <td>
+                <button id="operator">/</button>
+            </td>
+            <td>
+                <button id="operator">*</button>
+            </td>
+            <td>
+                <button id="operator">《</button>
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <button>7</button>
+            </td>
+            <td>
+                <button>8</button>
+            </td>
+            <td>
+                <button>9</button>
+            </td>
+            <td>
+                <button id="operator">-</button>
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <button>4</button>
+            </td>
+            <td>
+                <button>5</button>
+            </td>
+            <td>
+                <button>6</button>
+            </td>
+            <td>
+                <button>+</button>
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <button>1</button>
+            </td>
+            <td>
+                <button>2</button>
+            </td>
+            <td>
+                <button>3</button>
+            </td>
+            <td>
+                <button id="operator">=</button>
+            </td>
+        </tr>
+
+        <tr>
+            <td></td>
+            <td>
+                <button>0</button>
+            </td>
+            <td></td>
+        </tr>
+    </table>
+    <script>
+        
+        let Button = document.querySelectorAll('button');
+        console.log(Button);
+        for(let i = 0;i < Button.length;i++){
+            Button[i].onclick = function(){
+                let num = Button[i].innerHTML;
+                if(num == "="){
+                    let ret = eval(document.getElementById("theText").value);
+                    document.getElementById("theText").value = ret;
+                }else if(num == "C"){
+                    document.getElementById("theText").value = "";
+                }else if(num == "《"){
+                    let tmp = document.getElementById("theText").value;
+                    document.getElementById("theText").value = tmp.slice(0,tmp.length-1);
+                }else{
+                    document.getElementById("theText").value += num;
+                    console.log(document.getElementById("theText").value);
+                }
+            }
+        }
+    </script>
+</body>
+</html>
