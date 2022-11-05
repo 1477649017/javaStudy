@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <style>
+        .container {
+            width: 400px;
+            /* 两个数字的话，第一个是上下边距，第二个就是左右边距，设置为auto就是水平居中 */
+            margin: 0 auto;
+        }
+        h1 {
+            text-align: center;
+        }
+        p {
+            text-align: center;
+            color: grey;
+        }
+
+        .row {
+            height: 40px;
+            /* 每一个div内进行弹性布局 */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .row span {
+            width: 100px;
+        }
+        /* 一个div高是40px */
+        .row input {
+            height: 30px;
+            width: 250px;
+            border-radius: 10px;
+        }
+
+        .row button {
+            width: 358px;
+            height: 40px;
+            border-radius: 10px;
+            border: none;
+            background-color: orange;
+        }
+
+        .row button:active {
+            background-color:#666;
+        }
+    </style>
+
+    <div class="container">
+        <h1>表白墙</h1>
+        <p>输入后点击提交,就会把信息显示在表格中</p>
+        <div class="row">
+            <span>谁:</span><input type="text">
+        </div>
+        <div class="row">
+            <span>对谁:</span><input type="text">
+        </div>
+        <div class="row">
+            <span>说:</span><input type="text">
+        </div>
+        <div class="row">
+            <button>提交</button>
+        </div>
+    </div>
+
+    
+</body>
+</html>

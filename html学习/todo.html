@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <style>
+        .container {
+            width: 400px;
+            margin: 0 auto;
+        }
+
+        .row1 {
+            width: 400px;
+            height: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .row1 input {
+            height: 25px;
+            width: 300px;
+            box-sizing: border-box;
+        }
+
+        .row1 button {
+            height: 25px;
+            width: 100px;
+            border: none;
+            box-sizing: border-box;
+            background-color: orange;
+        }
+
+        
+
+        .row2 {
+            width: 400px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            background-color: black;
+            color: white;
+        }
+
+        .row2 span {
+            width: 200px;
+            height: 25px;
+            text-align: center;
+        }
+        
+        
+
+        .row input {
+            width: 200px;
+            height: 25px;
+            text-align: left;
+        }
+        
+
+        .newTask:active {
+            background-color: #666;
+        }
+
+        .row3 {
+            height: 25px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        .row3 button {
+            height: 20px;
+            background-color: orange;
+            border: none;
+            border-radius: 10px;
+        }
+        .row3 button:active {
+            background-color: #666;
+        }
+
+        
+
+        
+    </style>
+    <div class="container">
+        <div class="row1">
+            <input type="text"> <button class="newTask">新建任务</button>
+        </div>
+        <div class="row2">
+            <span class="todo">未完成</span> <span class="done">已完成</span>
+        </div>
+        <div class="row3"></div>
+    </div>
+
+    <script>
+        //为新增按钮添加事件
+        let addTaskButton = document.querySelector('.newTask');
+        addTaskButton.onclick = function(){
+            //获取输入框的内容
+            let input = document.querySelector('.row1 input');
+            let task = input.value;
+            if (task == '') {
+                alert('当前任务为空, 不能进行新增任务!');
+                return;
+            }
+            //根据任务开始创建元素
+            let div = document.createElement('span');
+            div.className='row3-1';
+            let checkBox = document.createElement('input');
+            checkBox.type = 'checkbox';//新增一个复选框
+            checkBox.className = 'check';
+            let span = document.createElement('span');
+            span.innerHTML = task;
+            let button = document.createElement('button');
+            button.innerHTML = '删除';
+            button.className='del';
+            //把元素加入到dom树
+            div.appendChild(checkBox);
+            div.appendChild(span);
+            div.appendChild(button);
+            let todo = document.querySelector('.row3');
+            todo.appendChild(div);
+            //把输入框清空
+            input.value = '';
+
+            checkBox.onclick = function() {
+                if (checkBox.checked) {
+                    let done = document.querySelector('.row3');
+                    let span2 = document.createElement('span');
+                    span2.className = 'row3-2';
+                    done.appendChild(span2);
+                    let span = document.createElement('span');
+                    span.innerHTML = task;
+                    span2.appendChild(span);
+
+                }
+            }
+
+            button.onclick = function() {
+                div.removeChild(checkBox);
+                div.removeChild(span);
+                div.removeChild(button);
+            }
+            
+        }
+
+        
+
+
+    </script>
+</body>
+</html>

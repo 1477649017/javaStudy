@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>请输入你要猜的数字:</h3>
+    <input type="text">
+    <div>
+        已经猜的次数: <span id="guessCount">0</span>
+    </div>
+    <div>
+        结果：<span id="result"></span>
+    </div>
+    <button>猜</button>
+
+    <script>
+        //先把该获取的元素先拿到
+        let input = document.querySelector('input');
+        let guessCount = document.querySelector('#guessCount');
+        let result = document.querySelector('#result');
+        let button = document.querySelector('button');
+
+        //生成随机数
+        let guessNum = parseInt(Math.random()*100) + 1;//js random产生的随机数是【0，1）之间的小数
+        console.log(guessNum);
+        //为button加上点击属性
+        button.onclick = function(){
+            let value = input.value;//获取输入框的值
+            if(value > guessNum){
+                result.innerHTML='猜大了!';
+            }else if(value < guessNum){
+                result.innerHTML='猜小了!';
+            }else{
+                result.innerHTML='猜对了!';        
+            }
+            let count = parseInt(guessCount.innerHTML);
+            count = count + 1;
+            guessCount.innerHTML = count;
+        }
+    </script>
+</body>
+</html>
