@@ -7,7 +7,7 @@
     <title>Document</title>
 </head>
 <body>
-    <div>hahaha1</div>
+
 
     <!-- <script>
         let div = document.querySelectorAll('div');
@@ -37,7 +37,7 @@
         }
     </script> -->
 
-    <script>
+    <!-- <script>
         let obj = {
             a: 10,
             b: 'hello'
@@ -47,6 +47,161 @@
         obj['a'] = 100;
         let arr = [];
         arr['hello'] = 10;
+    </script> -->
+
+    <!-- <div>hahaha</div>
+    <script>
+        let div = document.querySelector('div');
+        //获取元素内容
+        console.log(div.innerHTML);
+        //还可以通过赋值的形式将这个内容进行修改
+        div.onclick = function(){
+            //div.innerHTML = 'hello world';
+            //赋值的时候也不一定非得是文本，也可以是html片段
+            div.innerHTML = '<button>按钮</button>';
+        }
+    </script> -->
+    <!-- <img src="ikun.png" alt="" width="200px">
+    <script>
+        let img = document.querySelector('img');
+        //获取元素属性
+        console.log(img.src);
+        console.log(img.alt);
+        console.log(img.width);
+
+        //同样可以通过赋值进行修改
+        img.onmouseenter = function(){
+            img.width="400" //这里不需要带单位
+        }
+    </script> -->
+
+    <!-- <input type="password">
+    <button>显示密码</button>
+    <script>
+        let input = document.querySelector('input');
+        let button = document.querySelector('button');
+        button.onclick = function(){
+            if(input.type == 'password'){
+                input.type = 'text';
+                button.innerHTML = '隐藏密码';
+            }else if(input.type == 'text'){
+                input.type = 'password';
+                button.innerHTML = '显示密码';
+            }else{
+                alert('type类型错误');
+            }
+        }
+    </script> -->
+
+    <!-- <input type="text" value="0">
+    <button id="add">+</button>
+    <button id="minus">-</button>
+
+    <script>
+        let input = document.querySelector('input');
+        let addBut = document.querySelector('#add');
+        let minusBut = document.querySelector('#minus');
+
+        addBut.onclick = function(){
+            let oldVal = parseInt(input.value);
+            oldVal = oldVal + 1;
+            input.value = oldVal;
+        }
+
+        minusBut.onclick = function(){
+            let oldVal = parseInt(input.value);
+            oldVal = oldVal - 1;
+            input.value = oldVal;
+        }
+    </script> -->
+
+    <!-- <h1>请选择你的技能:</h1>
+    <div>
+        <input type="checkbox" class="skill">唱
+    </div>
+    <div>
+        <input type="checkbox" class="skill">跳
+    </div>
+    <div>
+        <input type="checkbox" class="skill">rap
+    </div>
+    <div>
+        <input type="checkbox" class="skill">篮球
+    </div>
+    <div>
+        <input type="checkbox" class="all">练习两年半，全都会
+    </div>
+
+    <script>
+        let all = document.querySelector('.all');
+        let skill = document.querySelectorAll('.skill');
+
+        all.onclick = function(){
+            for(let i = 0;i < skill.length;i++){
+                skill[i].checked = all.checked;//修改每一个的checked的属性为all的checked属性，其实就是true
+            }
+        }
+    </script> -->
+
+    <!-- <div style="font-size: 30px;">hahahahaha</div>
+
+    <script>
+        let div = document.querySelector('div');
+        div.onclick = function() {
+            let oldSize = parseInt(div.style.fontSize);//style也是一个属性，得到style之后再获取fontSize属性，js不用脊柱命名法，要转成小驼峰
+            oldSize += 10;
+            div.style.fontSize = oldSize + 'px';//这里要加上单位
+        }
+    </script> -->
+
+    <style>
+        .day {
+            color: black;
+            background-color: white;
+        }
+
+        .night {
+            color: white;
+            background-color:black;
+        }
+    </style>
+    <p class="day">这是一段话 Lorem ipsum dolor sit amet consectetur, 
+        adipisicing elit. A id provident similique, 
+        error cum totam quia optio ipsum doloribus, 
+        deleniti dolores aut magnam obcaecati ducimus assumenda eveniet corrupti accusamus laudantium!</p>
+
+    <script>
+        let p = document.querySelector('p');
+        p.onclick = function(){
+            if(p.className == "day"){
+                p.className = "night";
+            }else{
+                p.className = "day";
+            }
+        }
     </script>
+
+    <!-- <div class="parent">
+        <div>aaaa</div>
+        <div>bbbb</div>
+        <div class="toDel">cccc</div>
+    </div> -->
+
+    <!-- <script>
+        let div = document.querySelector('.parent');
+        childDiv = document.createElement('div')
+        childDiv.innerHTML = 'dddd';
+        div.appendChild(childDiv);
+    </script> -->
+
+    <!-- <script>
+        let div = document.querySelector('.parent');
+        let del = document.querySelector('.toDel');
+        div.removeChild(del);
+    </script> -->
+
+
+    
+
 </body>
 </html>
