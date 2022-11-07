@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>博客列表页</title>
+
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/blog_list.css">
+</head>
+<body>
+    <div class="nav">
+        <!-- 对于导航栏,多个页面都是要用的,所以把样式写道单独的css文件中 -->
+        <img src="img/logo.png" alt="">
+        <span class="title">我的博客系统</span>
+        <!-- spacer的作用只是为了把后面的a标签撑到右侧去 -->
+        <div class="spacer"></div>
+        <a href="blog_list.html">主页</a>
+        <a href="blog_edit.html">写博客</a>
+        <a href="#">注销</a>
+    </div>
+
+    <!-- 表示主页面的版心区域 -->
+    <div class="container">
+        <!-- 左侧用户信息区域 -->
+        <div class="container_left">
+            <!-- 用这个元素表示用户信息 -->
+            <div class="card">
+                <!-- 用户头像 -->
+                <img src="img/touxiang.jpg" alt="">
+                <!-- 用户名字 -->
+                <h3>海誓</h3>
+                <!-- gitee地址 -->
+                <a href="https://gitee.com/shadow-are-you-tired-with-me">gitee地址</a>
+                <div class="counter">
+                    <span>文章</span>
+                    <span>分类</span>
+                </div>
+                <div class="counter">
+                    <span>2</span>
+                    <span>1</span>
+                </div>
+            </div>
+        </div>
+        <!-- 右侧内容区域 -->
+        <div class="container_right">
+            <!-- 每一个blog代表一篇博客 -->
+            <div class="blog">
+                <div class="title">我的第一篇博客</div>
+                <div class="date">2022-11-07</div>
+                <div class="desc">
+                    从今天开始要好好写博客，刷题 Lorem ipsum dolor sit, amet consectetur adipisicing elit. Praesentium, veritatis placeat qui beatae odit voluptatum eaque at sequi eveniet! Molestias enim ut distinctio nesciunt minima rerum harum quas, quibusdam debitis.
+                </div>
+                <!-- 转义字符 &gt >  &lt < -->
+                <a href="blog_detail.html">查看全文 &gt;&gt;</a>
+            </div>
+
+            <div class="blog">
+                <div class="title">我的第二篇博客</div>
+                <div class="date">2022-11-07</div>
+                <div class="desc">
+                    从今天开始要好好写博客，刷题 Lorem ipsum dolor sit, amet consectetur adipisicing elit. Praesentium, veritatis placeat qui beatae odit voluptatum eaque at sequi eveniet! Molestias enim ut distinctio nesciunt minima rerum harum quas, quibusdam debitis.
+                </div>
+                <!-- 转义字符 &gt >  &lt < -->
+                <a href="blog_detail.html">查看全文 &gt;&gt;</a>
+            </div>
+
+            <div class="blog">
+                <div class="title">我的第三篇博客</div>
+                <div class="date">2022-11-07</div>
+                <div class="desc">
+                    从今天开始要好好写博客，刷题 Lorem ipsum dolor sit, amet consectetur adipisicing elit. Praesentium, veritatis placeat qui beatae odit voluptatum eaque at sequi eveniet! Molestias enim ut distinctio nesciunt minima rerum harum quas, quibusdam debitis.
+                </div>
+                <!-- 转义字符 &gt >  &lt < -->
+                <a href="blog_detail.html">查看全文 &gt;&gt;</a>
+            </div>
+
+            <div class="blog">
+                <div class="title">我的第四篇博客</div>
+                <div class="date">2022-11-07</div>
+                <div class="desc">
+                    从今天开始要好好写博客，刷题 Lorem ipsum dolor sit, amet consectetur adipisicing elit. Praesentium, veritatis placeat qui beatae odit voluptatum eaque at sequi eveniet! Molestias enim ut distinctio nesciunt minima rerum harum quas, quibusdam debitis.
+                </div>
+                <!-- 转义字符 &gt >  &lt < -->
+                <a href="blog_detail.html">查看全文 &gt;&gt;</a>
+            </div>
+
+            <div class="blog">
+                <div class="title">我的第五篇博客</div>
+                <div class="date">2022-11-07</div>
+                <div class="desc">
+                    从今天开始要好好写博客，刷题 Lorem ipsum dolor sit, amet consectetur adipisicing elit. Praesentium, veritatis placeat qui beatae odit voluptatum eaque at sequi eveniet! Molestias enim ut distinctio nesciunt minima rerum harum quas, quibusdam debitis.
+                </div>
+                <!-- 转义字符 &gt >  &lt < -->
+                <a href="blog_detail.html">查看全文 &gt;&gt;</a>
+            </div>
+
+            
+        </div>
+    </div>
+</body>
+</html>

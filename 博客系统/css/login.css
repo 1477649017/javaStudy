@@ -1,0 +1,16 @@
+/* 登录页的样式 */
+.login_container {
+    height: calc(100% - 50px);
+    /* 里面的登录框要弹性布局 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dialog {
+    width: 400px;
+    height: 300px;
+    background-color: rgba(255,255,255,0.8);
+    border-radius: 20px;
+}
+

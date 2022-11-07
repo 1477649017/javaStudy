@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>登录页面</title>
+
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/login.css">
+</head>
+<body>
+    <div class="nav">
+        <!-- 对于导航栏,多个页面都是要用的,所以把样式写道单独的css文件中 -->
+        <img src="img/logo.png" alt="">
+        <span class="title">我的博客系统</span>
+        <!-- spacer的作用只是为了把后面的a标签撑到右侧去 -->
+        <div class="spacer"></div>
+        <a href="blog_list.html">主页</a>
+        <a href="blog_edit.html">写博客</a>
+    </div>
+
+    <!-- 页面的版心 -->
+    <div class="login_container">
+        <!-- 登陆框 -->
+        <div class="dialog">
+            <h3>登录</h3>
+            <div class="row">
+                <span>用户名</span>
+                <input type="text" id="username">
+            </div>
+            <div class="row">
+                <span>密码</span>
+                <input type="password" id="password">
+            </div>
+
+            <div class="row">
+                <button id="login-button">登录</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
