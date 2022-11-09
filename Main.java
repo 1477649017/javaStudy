@@ -3,7 +3,145 @@ import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
 import java.util.*;
 
 public class Main{
-    public static void main(String[] args){
+    public static void main(String[] args) {
+
+    }
+
+    public static void main6(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        String str1 = scan.nextLine();
+        String str2 = scan.nextLine();
+        if(str1.length() > str2.length()){
+            String tmp = str1;
+            str1 = str2;
+            str2 = tmp;
+        }
+
+        String ret = "";
+        for(int i = 0;i < str1.length();i++){
+            int tmp = i;
+            int flag = 0;//标志位
+            int left = 0;
+            int right = 0;
+            for(int j = 0;j < str2.length();j++){
+                if(str2.charAt(j) == str1.charAt(tmp)){
+                    if(flag == 0){
+                        flag = 1;
+                        left = tmp;
+                    }
+                    if(tmp == str1.length() - 1){
+                        right = str1.length();
+                        if(str1.substring(left,right).length() > ret.length()){
+                            ret = str1.substring(left,right);
+                        }
+                        break;
+                    }
+                    tmp++;
+                }else{
+                    if(flag == 1){
+                        flag = 0;
+                        right = tmp;
+                    }
+                    if(str1.substring(left,right).length() > ret.length()){
+                        ret = str1.substring(left,right);
+                    }
+                }
+            }
+        }
+        System.out.println(ret);
+
+    }
+    public static void main5(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        StringBuffer stringBuffer = new StringBuffer(scan.next());
+        for(int i = 0;i < stringBuffer.length();i++){
+            char ch = stringBuffer.charAt(i);
+            if(ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' ||ch == 'u'){
+                stringBuffer.setCharAt(i,(char)(ch-32));
+            }
+        }
+        System.out.println(stringBuffer.toString());
+    }
+    public static  int findMinimum(int n, int[] left, int[] right) {
+        // write code here
+        int sum = 0;//用来记录当某一个颜色手套数量为0的时候，另一个对应手上的数量
+        int leftSum = 0;//记录左手手套要取的数量
+        int rightSum = 0;//记录右手手套要取的数量
+        int leftMin = Integer.MAX_VALUE;//记录左手手套数量的最小值
+        int rightMin = Integer.MAX_VALUE;//记录右手手套数量的最小值
+        for(int i = 0;i < n;i++){
+            if(left[i]*right[i] == 0){
+                sum = sum + left[i] + right[i];
+            }else{
+                leftSum += left[i];
+                if(left[i] < leftMin){
+                    leftMin = left[i];
+                }
+                rightSum += right[i];
+                if(right[i] < rightMin){
+                    rightMin = right[i];
+                }
+            }
+        }
+
+        return sum + Math.min(leftSum - leftMin + 1,rightSum - rightMin + 1) + 1;
+    }
+    public static void main4(String[] args) {
+        int[] left = new int[]{1,2,0,1,3,1};
+        int[] right = new int[]{0,0,0,2,0,1};
+        int ret = findMinimum(6, left, right);
+        System.out.println(ret);
+
+    }
+    public static void main3(String[] args){
+        Scanner scan = new Scanner(System.in);
+        String str1 = scan.nextLine().toLowerCase();
+        String str2 = scan.nextLine().toLowerCase();
+        int index = 0;
+        for(int i = 0;i < str1.length();i++){
+            if(str1.charAt(i) == '?' || str1.charAt(i) == '*'){
+                if(str1.charAt(i) == '?'){
+                    //匹配一个字符
+                    if(str2.charAt(i) >= 'a' && str2.charAt(i) <= 'z' || str2.charAt(i) >= '0' || str2.charAt(i) <= '9'){
+                        //只能匹配到数字，字母
+                        System.out.println(false);
+                        return;
+                    }else{
+                        continue;
+                    }
+                }else{
+                    //如果是*号是需要匹配多个字符的
+                    if(i != str1.length() - 1){
+                        char ch = str1.charAt(i+1);
+                        index = i;
+                        while(str2.charAt(index) != ch){
+                            if(str2.charAt(i) >= 'a' && str2.charAt(i) <= 'z' || str2.charAt(i) >= '0' || str2.charAt(i) <= '9'){
+                                System.out.println(false);
+                                return;
+                            }
+                            index++;
+                        }
+                    }else{
+                        //就从index位置开始遍历str2看是否可以进行合法匹配
+
+                        while(index < str2.length()){
+                            if(str2.charAt(i) >= 'a' && str2.charAt(i) <= 'z' || str2.charAt(i) >= '0' || str2.charAt(i) <= '9'){
+                                System.out.println(false);
+                                return;
+                            }
+                            index++;
+                        }
+                    }
+                }
+            }else if(str1.charAt(i) != str2.charAt(i)){
+                System.out.println(false);
+                return;
+            }
+        }
+
+        System.out.println(true);
+    }
+    public static void main1(String[] args){
         //就是一个简单的分割问题，中间比较麻烦的就是需要处理下双引号中的空格的问题
         Scanner scan = new Scanner(System.in);
         String str = scan.nextLine();
