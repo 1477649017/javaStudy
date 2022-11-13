@@ -3,7 +3,49 @@ import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
 import java.util.*;
 
 public class Main{
-    public static void main(String[] args) {
+    public static void main(String[] args){
+        //经过计算观察，我们会发现左上角的数就是 1 2 3 5 8 13 ..
+        //次方数值最大是10000
+        int[] arr = new int[10001];//浪费一个空间，让下标值直接和次方值可以直接对应起来
+        arr[1] = 1;
+        arr[2] = 2;
+        for(int i = 3;i < 10001;i++){
+            //只存结果的最后四位
+            arr[i] = arr[i-1] + arr[i-2];
+            arr[i] = arr[i] % 10000;
+        }
+
+        Scanner scan = new Scanner(System.in);
+        while (scan.hasNext()){
+            int n = scan.nextInt();
+            for(int i = 0;i < n;i++){
+                int j = scan.nextInt();
+                System.out.print(String.format("%04d",arr[j]));
+            }
+        }
+
+    }
+    public static void main7(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        int n = scan.nextInt();
+        int m = 2 * n - 1;
+        int[][] arr = new int[n][m];
+        for (int i = 0; i < n; i++) {
+            for (int j = n - 1 - i; j < (n - 1 - i) + (2 * i + 1); j++) {
+                if (i <= 1) {
+                    arr[i][j] = 1;
+                } else if (j == n - 1 - i || j == n + i - 1) {
+                    arr[i][j] = 1;
+                } else {
+                    arr[i][j] = arr[i - 1][j - 1] + arr[i - 1][j] + arr[i - 1][j + 1];
+                    if (i == n - 1 && arr[i][j] % 2 == 0) {
+                        System.out.println(j + 1);
+                        return;
+                    }
+                }
+            }
+        }
+        System.out.println(-1);
 
     }
 
