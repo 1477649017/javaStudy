@@ -2,8 +2,28 @@ import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
 
 import java.util.*;
 
+class ListNode{
+    int val;
+    ListNode next = null;
+    public ListNode(int val) {
+        this.val = val;
+    }
+}
 public class Main{
     public static void main(String[] args){
+        Scanner scan = new Scanner(System.in);
+        int n = scan.nextInt();
+        ListNode virHead = new ListNode(-1);
+        ListNode tmp = virHead;
+        for(int i = 0;i < n;i++){
+            ListNode node = new ListNode(scan.nextInt());
+            tmp.next = node;
+            tmp = tmp.next;
+        }
+        int left = scan.nextInt();
+        int right= scan.nextInt();
+    }
+    public static void main8(String[] args){
         //经过计算观察，我们会发现左上角的数就是 1 2 3 5 8 13 ..
         //次方数值最大是10000
         int[] arr = new int[10001];//浪费一个空间，让下标值直接和次方值可以直接对应起来
