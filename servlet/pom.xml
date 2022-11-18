@@ -24,4 +24,9 @@
 
     </dependencies>
 
+    <packaging>war</packaging>
+    <build>
+        <finalName>helloTest</finalName>
+    </build>
+
 </project>
