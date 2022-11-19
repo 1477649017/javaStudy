@@ -10,7 +10,47 @@ class ListNode{
     }
 }
 public class Main{
-    public static void main(String[] args){
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        while(scan.hasNext()){
+            int n = scan.nextInt();
+            int count = 0;
+            //因子数的概念，这里看题意应该是不可再分的因子，也就是因子与因子之间不能再有包含关系
+            for(int i = 2;i <= (int)(Math.sqrt(n));i++){
+                if(n % i == 0){
+                    //i是因子
+                    while(n % i == 0){
+                        n /= i;//把n所有的i因子都去掉，直至不能在被整除
+                    }
+                    count++;
+                }
+            }
+            if(n != 1){
+                count++;
+            }
+            System.out.println(count);
+        }
+    }
+    public static void main10(String[] args) {
+        String s = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        Scanner scan = new Scanner(System.in);
+        while(scan.hasNextLine()){
+            String tmp = scan.nextLine();
+            StringBuilder stringBuilder = new StringBuilder(tmp);
+            for(int i = 0;i < stringBuilder.length();i++){
+                if(stringBuilder.charAt(i) >= 'A' && stringBuilder.charAt(i) <= 'Z'){
+                    int index = s.indexOf(stringBuilder.charAt(i));
+                    if(index - 5 < 0){
+                        stringBuilder.setCharAt(i,s.charAt(21 + index));
+                    }else{
+                        stringBuilder.setCharAt(i,s.charAt(index - 5));
+                    }
+                }
+            }
+            System.out.println(stringBuilder.toString());
+        }
+    }
+    public static void main9(String[] args){
         Scanner scan = new Scanner(System.in);
         int n = scan.nextInt();
         ListNode virHead = new ListNode(-1);
