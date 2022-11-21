@@ -19,7 +19,6 @@ public class GetRequest extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         //开始拆解请求中的信息
         StringBuilder stringBuilder = new StringBuilder();//利用一个stringBuilder来存储信息
-
         //1,获取协议名版本号
         stringBuilder.append(req.getProtocol());
         stringBuilder.append("\n");
@@ -35,7 +34,7 @@ public class GetRequest extends HttpServlet {
         //5,获取Context-Path
         stringBuilder.append(req.getContextPath());
         stringBuilder.append("\n");
-        //6,获取查村字符串
+        //6,获取查询字符串
         stringBuilder.append(req.getQueryString());
         stringBuilder.append("\n");
         //7,更精细的获取查询字符串中的内容
@@ -56,6 +55,16 @@ public class GetRequest extends HttpServlet {
             stringBuilder.append(key + " : " + value);
             stringBuilder.append("\n");
         }
+
+        //9,获取body中使用的字符编码集
+        stringBuilder.append(req.getCharacterEncoding());
+        stringBuilder.append("\n");
+        //10,获取body中的数据类型
+        stringBuilder.append(req.getContentType());
+        stringBuilder.append("\n");
+        //11,以字节为单位，获取请求body的长度
+        stringBuilder.append(req.getContentLength());
+        stringBuilder.append("\n");
 
         resp.getWriter().write(stringBuilder.toString());
     }
