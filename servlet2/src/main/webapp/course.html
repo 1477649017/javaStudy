@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 这里的路径名是相对路径的写法,基准目录此时就是html所在的目录，也就是那个Context-Path /Test -->
+    <form action="getParameter" method="post">
+        <input type="text" name="courseId">
+        <input type="text" name="courseName">
+        <input type="submit" value="提交">
+    </form>
+
+    <!-- 下面这是绝对路径的写法 -->
+    <!-- <form action="/Test/getParameter"></form> -->
+</body>
+
+</html>
