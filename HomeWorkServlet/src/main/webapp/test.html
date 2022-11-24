@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <!-- <form action="test" method="post">
+        <input type="text" name="a" >
+        <input type="text" name="b" >
+        <input type="submit" value="提交">
+    </form> -->
+
+    <div>
+        <input type="text" >
+        <input type="text" >
+        <button>提交数据</button>
+    </div>
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script>
+        let bun = document.querySelector('button')
+        bun.onclick = function(){
+            let inputs = document.querySelectorAll('input')
+            let a = inputs[0].value
+            let b = inputs[1].value
+            let data = {
+                a : a,
+                b : b
+            }
+
+            $.ajax({
+                type : 'post',
+                url : 'test',
+                data : JSON.stringify(data),
+                contentType : "application/json;charset=utf8",
+                success : function(body){
+                    console.log("提交成功!");
+                }
+            })
+        }
+    </script>
+</body>
+</html>
