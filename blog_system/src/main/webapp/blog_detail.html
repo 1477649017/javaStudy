@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>博客详情页</title>
+
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/blog_list.css">
+    <link rel="stylesheet" href="css/blog_detail.css">
+
+</head>
+<body>
+    <!-- 这边大部分的页面都是和列表页一样的，赋值代码就好 -->
+    <div class="nav">
+        <!-- 对于导航栏,多个页面都是要用的,所以把样式写道单独的css文件中 -->
+        <img src="img/logo.png" alt="">
+        <span class="title">我的博客系统</span>
+        <!-- spacer的作用只是为了把后面的a标签撑到右侧去 -->
+        <div class="spacer"></div>
+        <a href="blog_list.html">主页</a>
+        <a href="blog_edit.html">写博客</a>
+        <a href="#">注销</a>
+    </div>
+
+    <!-- 表示主页面的版心区域 -->
+    <div class="container">
+        <!-- 左侧用户信息区域 -->
+        <div class="container_left">
+            <!-- 用这个元素表示用户信息 -->
+            <div class="card">
+                <!-- 用户头像 -->
+                <img src="img/touxiang.jpg" alt="">
+                <!-- 用户名字 -->
+                <h3>海誓</h3>
+                <!-- gitee地址 -->
+                <a href="https://gitee.com/shadow-are-you-tired-with-me">gitee地址</a>
+                <div class="counter">
+                    <span>文章</span>
+                    <span>分类</span>
+                </div>
+                <div class="counter">
+                    <span>2</span>
+                    <span>1</span>
+                </div>
+            </div>
+        </div>
+        <!-- 右侧内容区域 -->
+        <div class="container_right">
+            <div class="blog_detail">
+                <h3>我的第一篇博客</h3>
+                <div class="date">2022-11-07</div>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque iste officiis dolor placeat, optio delectus pariatur ipsam aperiam sequi doloribus nihil eum maiores sunt illum ab, error architecto! Laborum, ad!
+                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Earum veritatis, necessitatibus tenetur unde, nam accusantium soluta, qui distinctio magni iste minima blanditiis? Minima doloribus officia necessitatibus explicabo. Numquam, quis ab?
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, molestiae. Consequatur odio, asperiores, dolore, nulla velit vitae dicta fugit animi odit nemo molestias ducimus dolorem. Animi quae dicta voluptates id.
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam commodi repellendus nesciunt a quod deleniti quasi labore iusto voluptates quis laudantium ducimus, perferendis eum ipsum provident. Id tenetur explicabo quia?
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dicta quidem assumenda nihil! Laudantium, autem! Sunt recusandae accusantium expedita cum deserunt quibusdam enim labore ullam voluptatem aut similique, animi molestias aperiam.
+                </p>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
