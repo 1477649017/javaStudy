@@ -1,26 +1,21 @@
 /* 这个专门放博客列表内容的样式 */
-.blog {
-    width : 780px
-}
+
 
 .blog .title {
     font-size: 20px;
     font-weight: 700;
     text-align: center;
     padding: 10px 0;
-    width: 700px
 }
 
 .blog .date {
     text-align: center;
     color: rgb(0,128, 0);
     padding: 10px 0;
-    width:700px
 }
 
 .blog .desc {
     text-indent: 2em;
-    width : 700px
     /* 首行缩进 */
 }
 
