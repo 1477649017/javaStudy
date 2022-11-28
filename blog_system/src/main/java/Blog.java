@@ -1,5 +1,6 @@
 import java.sql.Date;
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 
 /**
  * Created with IntelliJ IDEA.
@@ -47,8 +48,12 @@ public class Blog {
         this.content = content;
     }
 
-    public Timestamp getPostTime() {
-        return postTime;
+    public String getPostTime() {
+        //这里的时间正常的，但是在把响应写回的时候，将blog对象转换成json字符串的过程中，时间会通过这个get函数获取，并且会把这个时间转换成时间戳
+        //所以为了避免被转换成时间戳，这里就需要先一步就把时间转换为格式化字符串传递过去
+        //转换时间格式
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        return sdf.format(postTime);
     }
 
     public void setPostTime(Timestamp postTime) {

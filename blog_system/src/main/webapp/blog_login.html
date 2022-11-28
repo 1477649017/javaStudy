@@ -23,24 +23,28 @@
     <!-- 页面的版心 -->
     <div class="login_container">
         <!-- 登陆框 -->
-        <div class="dialog">
-            <h3>登录</h3>
-            <div class="row">
-                <span>用户名</span>
-                <input type="text" id="username">
-            </div>
-            <div class="row">
-                <span>密码</span>
-                <input type="password" id="password">
-            </div>
+        <!-- 利用form表单构造请求 把登录信息发送给服务器 -->
+        <form action="login" method="post">
+            <div class="dialog">
+                <h3>登录</h3>
+                <div class="row">
+                    <span>用户名</span>
+                    <input type="text" id="username" name="username">
+                </div>
 
-            <div class="row">
-                <button id="login-button">登录</button>
-            </div>
+                <div class="row">
+                    <span>密码</span>
+                    <input type="password" id="password" name="password">
+                </div>
 
-            <!-- 登陆的时候是需要把用户名密码发送给服务器的，所以不能直接用a标签进行跳转 -->
-            
-        </div>
+                <div class="row">
+                    <input type="submit" value="登录" id="login-button">
+                </div>
+    
+                <!-- 登陆的时候是需要把用户名密码发送给服务器的，所以不能直接用a标签进行跳转 -->
+                
+            </div>
+        </form>
     </div>
 </body>
 </html>

@@ -20,6 +20,7 @@ public class UserDao {
         try {
             connection = DBUtil.getConnection();
             String sql = "select * from user where username = ?";
+            preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(1,username);
             resultSet = preparedStatement.executeQuery();
             while (resultSet.next()){ //next调用一次光标就向下移动一次 成功就是true 否则就是false
@@ -47,6 +48,7 @@ public class UserDao {
         try {
             connection = DBUtil.getConnection();
             String sql = "select * from user where userId = ?";
+            preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setInt(1,userId);
             resultSet = preparedStatement.executeQuery();
             while (resultSet.next()){

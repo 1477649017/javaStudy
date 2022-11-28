@@ -35,3 +35,6 @@ insert into user values(null,"李四","8888");
 
 insert into blog values(null,"博客系统设计","博客系统前端设计如下：XXX","2022-11-25 12:00:00",1);
 insert into blog values(null,"博客系统设计","博客系统前端设计如下：XXX","2022-11-25 12:00:00",1);
+
+insert into blog values(null,"博客系统设计","博客系统前端设计如下：XXX","2022-11-24 12:00:00",1);
+insert into blog values(null,"博客系统设计","博客系统前端设计如下：XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXxxxXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXxx","2022-11-27 12:00:00",1);

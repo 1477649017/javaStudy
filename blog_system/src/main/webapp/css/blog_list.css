@@ -1,5 +1,7 @@
 /* 这个专门放博客列表内容的样式 */
-
+.blog {
+    border-bottom: 1px solid #f0f0f2;
+}
 
 .blog .title {
     font-size: 20px;
@@ -17,6 +19,11 @@
 .blog .desc {
     text-indent: 2em;
     /* 首行缩进 */
+    word-wrap: break-word;
+    /* 在任意字符处断行 */
+    word-break: break-all;
+    /* 内容超出盒子不提供滚动条 */
+    overflow: hidden;
 }
 
 .blog a {

@@ -30,7 +30,7 @@
                 <!-- 用户头像 -->
                 <img src="img/touxiang.jpg" alt="">
                 <!-- 用户名字 -->
-                <h3>海誓</h3>
+                <h3></h3>
                 <!-- gitee地址 -->
                 <a href="https://gitee.com/shadow-are-you-tired-with-me">gitee地址</a>
                 <div class="counter">
@@ -61,52 +61,68 @@
     </div>
 
     <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="js/app.js"></script>
     <script>
             // 直接写在scritp中的内容是页面刷新就加载的
-            function getBlogs() {
-                $.ajax({
-                    type : 'get',
-                    url : 'blog',
-                    success : function(body){
-                        //body中包含着请求的结果 也就是博客列表
-                        //开始构造元素
-                        let containerRight = document.querySelector(".container_right");
-                        for(let blog of body){
-                            //相当于java的foreach
-                            //构造blogDiv
-                            let blogDiv = document.createElement('div');
-                            blogDiv.className = 'blog';
-                            //构造博客标题
-                            let titleDiv = document.createElement('div');
-                            titleDiv.className = 'title';
-                            titleDiv.innerHTML = blog.title;
-                            //构造博客发布时间
-                            let timeDiv = document.createElement('div');
-                            timeDiv.className = 'date';
-                            timeDiv.innerHTML = blog.postTime;
-                            //构造博客摘要
-                            let contentDiv = document.createElement('div');
-                            contentDiv.className = 'desc';
-                            contentDiv.innerHTML = blog.content;
-                            //构造a标签
-                            let a = document.createElement('a');
-                            //跳转到指定的博客详情 所以要加上参数
-                            a.href = "blog_detail.html?blogId=" + blog.blogId;
-                            a.innerHTML = "查看全文 &gt;&gt"
+        function getBlogs() {
+            $.ajax({
+                type : 'get',
+                url : 'blog',
+                success : function(body){
+                    //body中包含着请求的结果 也就是博客列表
+                    //开始构造元素
+                    let containerRight = document.querySelector(".container_right");
+                    for(let blog of body){
+                        //相当于java的foreach
+                        //构造blogDiv
+                        let blogDiv = document.createElement('div');
+                        blogDiv.className = 'blog';
+                        //构造博客标题
+                        let titleDiv = document.createElement('div');
+                        titleDiv.className = 'title';
+                        titleDiv.innerHTML = blog.title;
+                        //构造博客发布时间
+                        let timeDiv = document.createElement('div');
+                        timeDiv.className = 'date';
+                        timeDiv.innerHTML = blog.postTime;
+                        //构造博客摘要
+                        let contentDiv = document.createElement('div');
+                        contentDiv.className = 'desc';
+                        contentDiv.innerHTML = blog.content;
+                        //构造a标签
+                        let a = document.createElement('a');
+                        //跳转到指定的博客详情 所以要加上参数
+                        a.href = "blog_detail.html?blogId=" + blog.blogId;
+                        a.innerHTML = "查看全文 &gt;&gt"
 
-                            //拼装最后结果
-                            blogDiv.appendChild(titleDiv);
-                            blogDiv.appendChild(timeDiv);
-                            blogDiv.appendChild(contentDiv);
-                            blogDiv.appendChild(a);
+                        //拼装最后结果
+                        blogDiv.appendChild(titleDiv);
+                        blogDiv.appendChild(timeDiv);
+                        blogDiv.appendChild(contentDiv);
+                        blogDiv.appendChild(a);
 
-                            containerRight.appendChild(blogDiv);
-                        }
+                        containerRight.appendChild(blogDiv);
                     }
-                })
-            }
+                }
+            })
+        }
 
-            getBlogs();
+
+        function getUserInfo(){
+            $.ajax({
+                type : 'get',
+                url : 'userInfo',
+                success : function(body){
+                    //body就是一个用户信息
+                    let h3 = document.querySelector(".card>h3");
+                    h3.innerHTML = body.username;
+                }
+            })
+        }
+
+        getBlogs();
+        getLoginStatus();
+        getUserInfo();
     </script>
 </body>
 </html>

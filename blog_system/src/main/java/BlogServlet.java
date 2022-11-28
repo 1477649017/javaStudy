@@ -23,14 +23,18 @@ public class BlogServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         BlogDao blogDao = new BlogDao();
-        List<Blog> blogs = blogDao.selectAll();//获取所有的博客
         resp.setContentType("application/json;charset=utf8");
-        //关闭时间戳功能
-        objectMapper.configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS,false);
-        //转换时间格式
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        //让mapper指定时间日期格式为SimpleDateFormat
-        objectMapper.setDateFormat(sdf);
-        resp.getWriter().write(objectMapper.writeValueAsString(blogs));
+        //现在有个问题就是博客详情页 博客列表页都要使用get请求，所以在这个方法里面需要我们去做出区分 区分的依据就是query string
+        String blogId = req.getParameter("blogId");
+        if(blogId == null){
+            //就是博客列表页
+            List<Blog> blogs = blogDao.selectAll();//获取所有的博客
+            resp.getWriter().write(objectMapper.writeValueAsString(blogs));
+        }else{
+            //博客详情页
+            Blog blog = blogDao.selectOne(Integer.parseInt(blogId));
+            resp.getWriter().write(objectMapper.writeValueAsString(blog));
+        }
+
     }
 }

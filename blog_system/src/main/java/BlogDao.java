@@ -107,14 +107,21 @@ public class BlogDao {
 
         try {
             connection = DBUtil.getConnection();
-            String sql = "select * from blog";
+            //按照发布时间降序排列，才能保证最新发布的博客在页面的最上面先显示
+            String sql = "select * from blog order by postTime desc";
             preparedStatement = connection.prepareStatement(sql);
             resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 Blog blog = new Blog();
                 blog.setBlogId(resultSet.getInt("blogId"));
                 blog.setTitle(resultSet.getString("title"));
-                blog.setContent(resultSet.getString("content"));
+                String content = resultSet.getString("content");
+                //注意，这是博客列表页，我们不需要看全你的博客详细内容，只需要显示一些摘要就可，直接显示所有正文，那么就太多了，页面也放不下多少
+                if(content.length() > 100){
+                    //如果长度大于100
+                    content = content.substring(0,100) + "....";//截取一部分
+                }
+                blog.setContent(content);
                 blog.setPostTime(resultSet.getTimestamp("postTime"));
                 blog.setUserId(resultSet.getInt("userId"));
                 list.add(blog);

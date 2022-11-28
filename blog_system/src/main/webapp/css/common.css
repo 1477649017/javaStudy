@@ -11,6 +11,24 @@
     /* 内外边距都设为0,并且保证边框啥的不会撑大盒子 */
 }
 
+html {
+    height: 100%;
+}
+
+body {
+    /* 注意这里的相对路径要先跳出css目录 */
+    background-image: url(../img/wallPhoto1.jpg);
+    /* 不要背景图平铺 */
+    background-repeat: no-repeat;
+    /* 让背尽可能地方法 */
+    background-size: cover;
+    /* body宽度默认和浏览器一样宽，但是高度不是，所以这里要设置一下高度 */
+    height: 100%;
+    /* 和html一样高 */
+    /* 设置图片位置 */
+    background-position: center center;
+}
+
 .nav {
     /* 导航栏的高度普遍都是50px */
     height: 50px;
@@ -50,22 +68,8 @@
 
 /* 设置整个页面的背景图 */
 
-html {
-    height: 100%;
-}
-body {
-    /* 注意这里的相对路径要先跳出css目录 */
-    background-image: url(../img/wallPhoto1.jpg);
-    /* 不要背景图平铺 */
-    background-repeat: no-repeat;
-    /* 让背尽可能地方法 */
-    background-size: cover;
-    /* body宽度默认和浏览器一样宽，但是高度不是，所以这里要设置一下高度 */
-    height: 100%;
-    /* 和html一样高 */
-    /* 设置图片位置 */
-    background-position: center center;
-}
+
+
 
 
 /* 版心样式 */
@@ -89,10 +93,24 @@ body {
 
 /* left区域样式 */
 .card {
-    background-color: rgba(255,255,255,0.8);
+    background-color: rgba(255,255,255,1);
     /* 让头像和文字不要顶着边界 */
     padding: 30px;
-    border-radius: 20px;
+    border-radius: 5px;
+}
+
+
+/* right区域布局 */
+.container .container_right {
+    width: 796px;
+    height: 100%;
+    background-color: rgba(255,255,255,1);
+    border-radius: 5px;
+    padding: 20px;
+    /* 如果博客内容太多超出页面范围，自动添加滚动条 */
+    overflow: auto;
+    /* 不要让滚动条出现在浏览器页面的右边，那样会把整个页面撑大 */
+    /* 一个页面的高度也是固定的 */
 }
 
 .card img {
@@ -125,15 +143,3 @@ body {
     padding: 5px;
 }
 
-/* right区域布局 */
-.container .container_right {
-    width: 796px;
-    height: 100%;
-    background-color: rgba(255,255,255,0.8);
-    border-radius: 20px;
-    padding: 20px;
-    /* 如果博客内容太多超出页面范围，自动添加滚动条 */
-    overflow: auto;
-    /* 不要让滚动条出现在浏览器页面的右边，那样会把整个页面撑大 */
-    /* 一个页面的高度也是固定的 */
-}
