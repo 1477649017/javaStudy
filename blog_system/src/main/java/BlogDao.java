@@ -85,6 +85,7 @@ public class BlogDao {
             connection = DBUtil.getConnection();
             String sql = "delete from blog where blogId = ?";
             preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1,blodId);
             int ret = preparedStatement.executeUpdate();
             if(ret != 1){
                 System.out.println("博客删除失败!");

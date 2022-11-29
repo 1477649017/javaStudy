@@ -51,7 +51,7 @@ body {
 
 
 .nav .spacer {
-    width: 70%;
+    width: 65%;
 }
 
 .nav a {
@@ -59,7 +59,7 @@ body {
     text-decoration: none;
     color:white;
     /* 把几个a标签分开，这里使用内外边距都可以做到 */
-    padding: 0 15px;
+    padding: 0 10px;
 }
 
 .nav a:hover {
