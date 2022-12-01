@@ -50,6 +50,15 @@
         Http/1.1 200 ok
         Location: blog-list.html 重定向一下
 
+  注册页：
+     和登录页面相似
+     前端 post /register content-type : application/x-www-form-urlencoded form表单
+         body : username=xx & password=xxxx
+
+     后端:
+       Http/1.1 200 ok
+       Location:blog_login.html 重定向 刷新页面一下 直接开始登录
+
 
 4，强制登录才能访问列表页 编辑页 设定用户权限
    在访问列表页 编辑页的时候就会通过ajax构造一个get请求获取登录状态 在后端通过会话进行判断

@@ -17,7 +17,7 @@ html {
 
 body {
     /* 注意这里的相对路径要先跳出css目录 */
-    background-image: url(../img/wallPhoto1.jpg);
+    background-image: url(../img/moutain.jpg);
     /* 不要背景图平铺 */
     background-repeat: no-repeat;
     /* 让背尽可能地方法 */

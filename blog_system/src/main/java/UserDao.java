@@ -65,4 +65,33 @@ public class UserDao {
         }
         return null;
     }
+
+    //根据注册提交过来的数据插入到数据库中
+    public void insertUser(String username,String password){
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+
+        try {
+            //获取连接
+            connection = DBUtil.getConnection();
+            String sql = "insert into user values(null,?,?)";
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1,username);
+            preparedStatement.setString(2,password);
+            //开始执行sql
+            int ret = preparedStatement.executeUpdate();
+            if(ret != 1){
+                System.out.println("注册用户数据提交数据库失败!");
+            }else{
+                System.out.println("注册用户数据提交数据库成功!");
+            }
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            DBUtil.close(connection,preparedStatement,resultSet);
+        }
+    }
 }
