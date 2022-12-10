@@ -1,88 +1,78 @@
-/**
- * Created with IntelliJ IDEA.
- * Description:
- * User: 14776
- * Date: 2022-10-10
- * Time: 23:01
- */
 import java.util.*;
 
-
+//把数字翻译成字符串
 public class Solution {
     /**
-     *
-     * @param s string字符串
+     * 解码
+     * @param nums string字符串 数字串
      * @return int整型
      */
-    public boolean isPalindrome(String s, int start, int end) {
-        //判断是不是回文串
-        while (start < end) {
-            if (s.charAt(start) != s.charAt(end)) {
-                return false;
-            }
-            start++;
-            end--;
+    public int solve (String nums) {
+        // write code here
+        int n = nums.length();
+        int[] dp = new int[n+1];
+        //dp[i]表示以第i个字符结尾的字符串的译码个数
+        dp[0] = 1;//对于dp[2]有用
+        if(nums.charAt(0) == '0'){
+            //如果就一个字符并且是0，那么就没有译码
+            dp[1] = 0;
+        }else{
+            dp[1] = 1;
         }
-        return true;
-    }
-    //优化，利用动态规划实现回文串的判断
-    public  boolean[][] getMat(String s) {
-        int len = s.length();
-        boolean[][] Mat = new boolean[len][len];
-        for (int i = 0; i < len; i++) {
-            for (int j = 0; j <= i; ++j) {
-                if (j == i)
-// 单字符为回文字符串
-                    Mat[j][i] = true;
-                else if (i == j + 1) {
-// 相邻字符如果相同，则为回文字符串
-                    if (s.charAt(i) == s.charAt(j))
-                        Mat[j][i] = true;
-                    else
-                        Mat[j][i] = false;
-                } else {
-// F(i,j) = {s[i]==s[j] && F(i+1,j-1)
-// j > i+1
-                    Mat[j][i] = (s.charAt(i) == s.charAt(j)) && Mat[j + 1][i - 1];
-                }
+
+        for(int i = 2;i <= n;i++){
+            //分为两种情况，就是当前这个字符可以单独译码(不是0)
+            //或者可以和前一个组合译码 前一个是1 前一个是2并且自身小于等于'6'
+            //情况1 可以单独译码
+            if(nums.charAt(i-1) != '0'){
+                dp[i] += dp[i-1];
             }
+            //情况2 可以组合译码
+            if(nums.charAt(i-2) == '1' || nums.charAt(i-2) == '2' && nums.charAt(i-1) <= '6'){
+                dp[i] += dp[i-2];
+            }
+            //如果技能单独译码 又可以组合译码 刚好两个if就都满足了
         }
-        return Mat;
+        return dp[n];
     }
 
-    public int minCut (String s) {
-        // write code here
-        int len = s.length();
-        boolean[][] Mat = getMat(s);
-        if (len == 0) {
-            return 0;//本身就是空字符串
-        }
-        if (Mat[0][len-1]) {
-            //如果整个字符串本身就是回文串
-            return 0;
-        }
-        int[] minCutNum = new int[len + 1];//定义数组来记录结果
-        //赋初值
-        for (int i = 1; i <= len; i++) {
-            minCutNum[i] = i - 1; //表示前i个字符分割的最大次数
-            //minCutNum[0]不用初始化了，空串已经上面考虑了
-        }
-        //开始进行计算
-        for (int i = 2; i <= len; i++) {
-            //i直接从2开始，i = 1一个字符分割次数肯定是0
-            //先判断是不是整个就是回文
-            if (Mat[0][i-1]) {
-                minCutNum[i] = 0;
-                continue;//就可以直接开始新的循环了
-            }
-            for (int j = 1; j < i; j++) {
-                //遍历这前i个字符，就直接从i开始了，整个是回文上面考虑了
-                //这里的j可以理解为字符下标
-                if (Mat[j][i-1]) {
-                    minCutNum[i] = Math.min(minCutNum[i], minCutNum[j] + 1);
+
+    //最长公共子串
+    public String getMaxSubStr(String str1,String str2){
+        char[] ch1 = str1.toCharArray();
+        char[] ch2 = str2.toCharArray();
+        int len1 = ch1.length;
+        int len2 = ch2.length;
+        //定义一个dp数组 记录信息
+        int[][] dp = new int[len1 + 1][len2 + 1];
+        int start = 0;//用来保存最长公共子串的起始下标
+        int maxSub = 0;
+        for(int i = 1;i <= len1;i++){
+            for(int j = 1;j <= len2;j++){
+                //i j表示的都是第几个字符位置 而不是下标 这点要注意
+                if(ch1[i-1] == ch2[j-1]){
+                    dp[i][j] = dp[i-1][j-1] + 1;
+                    if(dp[i][j] > maxSub){
+                        maxSub = dp[i][j];//更新最大子串长度值
+                        start = i - maxSub;//更新最长子串的其实下标
+                    }
                 }
             }
         }
-        return minCutNum[len];
+        return str1.substring(start,start+maxSub);
     }
+    public String LCS (String str1, String str2) {
+        // write code here
+        //F(i,j) = F(i-1,j-1) + 1
+        //表示以str1的第i个字符结尾 以str2的第j个字符结尾的最长公共子串
+
+        String tmp = null;
+        if(str1.length() < str2.length()){
+            return getMaxSubStr(str1,str2);
+        }else{
+            return getMaxSubStr(str2,str1);
+        }
+    }
+
+    //这个题说是动归 其实过程也是一个个进行组合计算 本质上和双层for循环暴力求解差不多的意思
 }
