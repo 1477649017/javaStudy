@@ -1,0 +1,9 @@
+-- 这里放的是操作数据库的sql语句
+-- 这里涉及到的就只有一个图书表，针对图书表中的书籍进行增删改查
+-- 一本书的属性 ： 书名name 作者author 价格price 类型type 是否被借出isBorrowed
+
+create database bookmanagement;
+create table book(name varchar(50),author varchar(50),price double(4,2),type varchar(20),isBorrowed varchar(20));
+insert into book values("三国演义","罗贯中",29,"小说","false");
+insert into book values("西游记","吴承恩",30,"小说","false");
+insert into book values("红楼梦","曹雪芹",22,"小说","false");
