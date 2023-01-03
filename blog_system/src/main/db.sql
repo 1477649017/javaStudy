@@ -5,7 +5,7 @@
 -- 自增主键从1开始，传入null会自动从1开始增加
 -- 存在外键约数，注意表之间的顺序 以及外键定义的写法
 -- 为什么新创建的库 表还需要先判断存在删除 因为在业务中给你的新的数据库不一定完全干净 所以这样可以确保你的数据库 表创建的没有错
-create database if not exists java105_blog_system;
+create database if not exists java105_blog_system charset utf8mb4;
 
 use java105_blog_system;
 
@@ -36,5 +36,5 @@ insert into user values(null,"李四","8888");
 insert into blog values(null,"博客系统设计","博客系统前端设计如下：XXX","2022-11-25 12:00:00",1);
 insert into blog values(null,"博客系统设计","博客系统前端设计如下：XXX","2022-11-25 12:00:00",1);
 
-insert into blog values(null,"博客系统设计","博客系统前端设计如下：XXX","2022-11-24 12:00:00",1);
+insert into blog values(null,"博客系统设计","博客系统前端设计如下：XXX","2022-11-26 12:00:00",1);
 insert into blog values(null,"博客系统设计","博客系统前端设计如下：XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXxxxXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXxx","2022-11-27 12:00:00",1);

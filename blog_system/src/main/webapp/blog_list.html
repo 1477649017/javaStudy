@@ -35,11 +35,9 @@
                 <a href="https://gitee.com/shadow-are-you-tired-with-me">gitee地址</a>
                 <div class="counter">
                     <span>文章</span>
-                    <span>分类</span>
                 </div>
                 <div class="counter">
-                    <span>2</span>
-                    <span>1</span>
+                    <span class="articleNum"></span>
                 </div>
             </div>
         </div>
@@ -104,6 +102,7 @@
                         containerRight.appendChild(blogDiv);
                     }
                 }
+
             })
         }
 
@@ -120,9 +119,21 @@
             })
         }
 
+        function getArticleNum(){
+            $.ajax({
+                type : 'get',
+                url : 'articleNum',
+                success : function(data){
+                    let span = document.querySelector(".card .counter .articleNum")
+                    span.innerHTML = data.count;
+                }
+            })
+        }
+
         getBlogs();
         getLoginStatus();
         getUserInfo();
+        getArticleNum();
     </script>
 </body>
 </html>

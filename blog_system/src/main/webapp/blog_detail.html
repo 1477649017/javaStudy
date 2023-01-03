@@ -48,11 +48,9 @@
                 <a href="https://gitee.com/shadow-are-you-tired-with-me">gitee地址</a>
                 <div class="counter">
                     <span>文章</span>
-                    <span>分类</span>
                 </div>
                 <div class="counter">
-                    <span>2</span>
-                    <span>1</span>
+                    <span class="articleNum"></span>
                 </div>
             </div>
         </div>
@@ -116,10 +114,22 @@
             deleteBtn.href = "delete" + location.search;//在后面带上query string
         }
 
+        function getArticleNum(){
+            $.ajax({
+                type : 'get',
+                url : 'articleNum' + location.search,//这里要带上queryString中的内容 也就是blogId再去请求数据
+                success : function(data){
+                    let span = document.querySelector(".card .counter .articleNum")
+                    span.innerHTML = data.count;
+                }
+            })
+        }
+
         getBlog();
         getLoginStatus();
         getUserInfo();
         updateDeleteUrl();
+        getArticleNum();
     </script>
 
 </body>

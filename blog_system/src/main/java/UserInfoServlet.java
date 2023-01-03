@@ -52,7 +52,7 @@ public class UserInfoServlet extends HttpServlet {
             resp.getWriter().write("当前用户不存在!");
             return;
         }
-        user.setPassword("");
+        user.setPassword("");//把密码信息置为空之后再进行写回
         resp.setContentType("application/json;charset=utf8");
         resp.getWriter().write(objectMapper.writeValueAsString(user));
     }

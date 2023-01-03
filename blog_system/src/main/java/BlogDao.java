@@ -134,4 +134,28 @@ public class BlogDao {
         }
         return list;
     }
+
+    public int getArticleNum(int userId){
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        int count = 0;
+        try{
+            //获取连接
+            connection = DBUtil.getConnection();
+            String sql = "select count(*) from blog where userId = ?";//根据userID来统计该用户的文章数量
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1,userId);
+            resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()){
+                count = resultSet.getInt(1);//获取结果
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            DBUtil.close(connection,preparedStatement,resultSet);
+        }
+        return count;//返回结果
+    }
 }

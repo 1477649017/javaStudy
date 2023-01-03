@@ -33,4 +33,10 @@
             <version>5.1.45</version>
         </dependency>
     </dependencies>
+
+    <packaging>war</packaging>
+    <build>
+        <finalName>blog_system</finalName>
+    </build>
+
 </project>
