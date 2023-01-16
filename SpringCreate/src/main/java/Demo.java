@@ -6,6 +6,9 @@
  * Time: 21:53
  */
 public class Demo {
+    public Demo(){
+        System.out.println("执行Demo类的构造方法");
+    }
     public String func(){
         return "hello java";
     }
