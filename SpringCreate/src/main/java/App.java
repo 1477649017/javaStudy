@@ -1,6 +1,7 @@
 import Test.Student;
 import Test.test.AComponent;
 import Test.test.BController;
+import Test.test.Controller.StudentController;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.xml.XmlBeanFactory;
 import org.springframework.context.ApplicationContext;
@@ -54,9 +55,20 @@ public class App {
         Demo demo1 = beanFactory.getBean("demo1", Demo.class);
     }
 
+    public static void main4(String[] args) {
+        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("SpringConfig.xml");
+//        Student student = applicationContext.getBean("getStudent", Student.class);
+//        System.out.println(student);
+//        Student student1 = applicationContext.getBean("stu1", Student.class);
+//        Student student2 = applicationContext.getBean("stu2", Student.class);
+//        System.out.println(student1);
+//        System.out.println(student2);
+    }
+
     public static void main(String[] args) {
         ApplicationContext applicationContext = new ClassPathXmlApplicationContext("SpringConfig.xml");
-        Student student = applicationContext.getBean("getStudent", Student.class);
-        System.out.println(student);
+        StudentController studentController = applicationContext.getBean("studentController",StudentController.class);
+        studentController.sayHi();
     }
+
 }
