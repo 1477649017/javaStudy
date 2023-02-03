@@ -131,37 +131,149 @@ package BacktrackingAlgorithm.DFS;
 
 
 ///////////////////////////////////////////////////////////////
+//import java.util.*;
+//class Solution {
+//    public List<Integer> path = new ArrayList<>();
+//    public Map<Integer,Boolean> map = new HashMap<>();
+//    public List<List<Integer>> ret = new ArrayList<>();
+//
+//    public void DFS(int[] nums,int index){
+//        if(index == nums.length + 1){
+//            if(!ret.contains(path)){//判断一下是不是已经有了 避免加入重复值
+//                ret.add(new ArrayList<>(path));
+//            }
+//            return ;
+//        }
+//
+//        for(int i = 0;i < nums.length;i++){
+//            if(!map.get(i)){
+//                path.add(nums[i]);
+//                map.put(i,true);//用了该元素就改变状态
+//                DFS(nums,index + 1);//往下递归
+//                map.put(i,false);//还原状态
+//                path.remove(path.size() - 1);//还原path
+//            }
+//        }
+//
+//
+//    }
+//
+//    public List<List<Integer>> permuteUnique(int[] nums) {
+//        //因为存在重复值 所以保存状态不能再和值对应了 可以通过数组下标来对应状态 因为下标事唯一的
+//        for(int i = 0;i < nums.length;i++){//初始化元素状态 都是没有用过的
+//            map.put(i,false);
+//        }
+//        DFS(nums,1);
+//        return ret;
+//    }
+//}
+
+
+//////////////////////////////////////////////////
+//组总和
+//import java.util.*;
+//class Solution {
+//    public List<Integer> path = new ArrayList<>();
+//    public List<List<Integer>> ret = new ArrayList<>();
+//
+//    public void DFS(int[] candidates,int target,int sum,int startIndex){
+//        if(sum > target){
+//            return ;//说明递归到目前sum已经大于了target就可以直接返回了
+//        }
+//        if(sum == target){
+//            //找到了一个结果
+//            ret.add(new ArrayList<>(path));
+//            return ;
+//        }
+//
+//        for(int i = startIndex;i < candidates.length;i++){
+//            path.add(candidates[i]);
+//            sum += candidates[i];
+//            DFS(candidates,target,sum,i);
+//            sum -= candidates[i];
+//            path.remove(path.size() - 1);
+//        }
+//    }
+//    public List<List<Integer>> combinationSum(int[] candidates, int target) {
+//        //组合总和其实对于组合问题而言 换汤不换药
+//        DFS(candidates,target,0,0);
+//        return ret;
+//    }
+//}
+
+
+//组合总和2
+//import java.util.*;
+//class Solution {
+//    public List<Integer> path = new ArrayList<>();
+//    public List<List<Integer>> ret = new ArrayList<>();
+//    public Map<Integer,Boolean> map = new HashMap<>();
+//
+//    public void DFS(int[] candidates, int target,int sum,int startIndex){
+//        if(sum > target){
+//            return ;
+//        }
+//        if(sum == target){
+//            ret.add(new ArrayList<>(path));
+//            return ;
+//        }
+//
+//        for(int i = startIndex;i < candidates.length;i++){
+//            if(i > 0 && candidates[i] == candidates[i-1] && map.get(candidates[i-1]) == false){
+//                continue;//去重
+//            }
+//
+//            path.add(candidates[i]);
+//            sum += candidates[i];
+//            map.put(candidates[i],true);
+//            DFS(candidates,target,sum,i+1);
+//            sum -= candidates[i];
+//            map.put(candidates[i],false);
+//            path.remove(path.size() - 1);
+//
+//        }
+//    }
+//
+//    public List<List<Integer>> combinationSum2(int[] candidates, int target) {
+//        //相对于组合总和1 这个题唯一的不同点就是每个数字只能使用一次了
+//        Arrays.sort(candidates);//一定要先排序才可以
+//        for(int i = 0;i < candidates.length;i++){
+//            map.put(candidates[i],false);
+//        }
+//
+//        DFS(candidates,target,0,0);
+//        return ret;
+//    }
+//}
+
+//组合总和3
 import java.util.*;
 class Solution {
     public List<Integer> path = new ArrayList<>();
-    public Map<Integer,Boolean> map = new HashMap<>();
     public List<List<Integer>> ret = new ArrayList<>();
 
-    public void DFS(int[] nums,int index){
-        if(index == nums.length + 1){
-            if(!ret.contains(path)){//判断一下是不是已经有了 避免加入重复值
+    public void DFS(int k,int n,int sum,int startIndex){
+        if(sum > n){
+            return ;
+        }
+        if(path.size() == k){
+            if(sum == n){
                 ret.add(new ArrayList<>(path));
             }
             return ;
         }
 
-        for(int i = 0;i < nums.length;i++){
-            if(!map.get(i)){
-                path.add(nums[i]);
-                map.put(i,true);//用了该元素就改变状态
-                DFS(nums,index + 1);//往下递归
-                map.put(i,false);//还原状态
-                path.remove(path.size() - 1);//还原path
-            }
+        for(int i = startIndex;i <= 9 - (k - path.size()) + 1;i++){
+            path.add(i);
+            sum += i;
+            DFS(k,n,sum,i+1);
+            sum -= i;
+            path.remove(path.size() - 1);
         }
     }
-
-    public List<List<Integer>> permuteUnique(int[] nums) {
-        //因为存在重复值 所以保存状态不能再和值对应了 可以通过数组下标来对应状态 因为下标事唯一的
-        for(int i = 0;i < nums.length;i++){//初始化元素状态 都是没有用过的
-            map.put(i,false);
-        }
-        DFS(nums,1);
+    public List<List<Integer>> combinationSum3(int k, int n) {
+        //限定了数字1~9之间的数字进行组合 每个数字最多使用一次 这里不存在重复数字
+        DFS(k,n,0,1);
         return ret;
     }
 }
