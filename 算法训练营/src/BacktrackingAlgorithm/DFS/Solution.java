@@ -247,33 +247,82 @@ package BacktrackingAlgorithm.DFS;
 //}
 
 //组合总和3
-import java.util.*;
-class Solution {
-    public List<Integer> path = new ArrayList<>();
-    public List<List<Integer>> ret = new ArrayList<>();
+//import java.util.*;
+//class Solution {
+//    public List<Integer> path = new ArrayList<>();
+//    public List<List<Integer>> ret = new ArrayList<>();
+//
+//    public void DFS(int k,int n,int sum,int startIndex){
+//        if(sum > n){
+//            return ;
+//        }
+//        if(path.size() == k){
+//            if(sum == n){
+//                ret.add(new ArrayList<>(path));
+//            }
+//            return ;
+//        }
+//
+//        for(int i = startIndex;i <= 9 - (k - path.size()) + 1;i++){
+//            path.add(i);
+//            sum += i;
+//            DFS(k,n,sum,i+1);
+//            sum -= i;
+//            path.remove(path.size() - 1);
+//        }
+//    }
+//    public List<List<Integer>> combinationSum3(int k, int n) {
+//        //限定了数字1~9之间的数字进行组合 每个数字最多使用一次 这里不存在重复数字
+//        DFS(k,n,0,1);
+//        return ret;
+//    }
+//
+//}
 
-    public void DFS(int k,int n,int sum,int startIndex){
-        if(sum > n){
-            return ;
-        }
-        if(path.size() == k){
-            if(sum == n){
-                ret.add(new ArrayList<>(path));
-            }
-            return ;
-        }
 
-        for(int i = startIndex;i <= 9 - (k - path.size()) + 1;i++){
-            path.add(i);
-            sum += i;
-            DFS(k,n,sum,i+1);
-            sum -= i;
-            path.remove(path.size() - 1);
-        }
-    }
-    public List<List<Integer>> combinationSum3(int k, int n) {
-        //限定了数字1~9之间的数字进行组合 每个数字最多使用一次 这里不存在重复数字
-        DFS(k,n,0,1);
-        return ret;
-    }
-}
+////////////////////////////////
+//分割回文串
+//import java.util.*;
+//class Solution {
+//    public List<String> path = new ArrayList<>();
+//    public List<List<String>> ret = new ArrayList<>();
+//
+//    public boolean isPalindrome(String s,int left,int right){
+//        while(left < right){
+//            if(s.charAt(left) != s.charAt(right)){
+//                return false;
+//            }
+//            left++;
+//            right--;
+//        }
+//        return true;
+//    }
+//    public void DFS(String s,int startIndex){
+//        if(startIndex == s.length()){
+//            ret.add(new ArrayList<>(path));
+//            return ;
+//        }
+//
+//        for(int i = startIndex;i < s.length();i++){
+//            //每次分割出的子串就是[startIndex,i]
+//            //先判断分出来的是不是回文串 目前都不是就没必要往下递归了
+//            if(isPalindrome(s,startIndex,i)){
+//                //目前是一个回文字符串 先加入path中
+//                path.add(s.substring(startIndex,i+1));
+//            }else{
+//                continue;//不是回文串就跳过当前这种分割法
+//            }
+//
+//            DFS(s,i+1);
+//            path.remove(path.size() - 1);
+//        }
+//    }
+//
+//    public List<List<String>> partition(String s) {
+//        DFS(s,0);
+//        return ret;
+//    }
+//}
+
+
+/////////////////////////////////////
