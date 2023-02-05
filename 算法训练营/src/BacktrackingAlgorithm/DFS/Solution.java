@@ -326,3 +326,182 @@ package BacktrackingAlgorithm.DFS;
 
 
 /////////////////////////////////////
+//复原IP地址
+//import java.util.*;
+//class Solution {
+//    public List<String> path = new ArrayList<>();
+//    public List<String> ret = new ArrayList<>();
+//
+//    public boolean isLegal(String s,int start,int end){
+//        //每次分割出来的段中 数值只能是介于0~255之间 不能以0开头
+//        //不能含有其他非数字字符
+//        if (start > end) {
+//            return false;
+//        }
+//        if (s.charAt(start) == '0' && start != end) { // 0开头的数字不合法
+//            return false;
+//        }
+//        int num = 0;
+//        for (int i = start; i <= end; i++) {
+//            if (s.charAt(i) > '9' || s.charAt(i) < '0') { // 遇到⾮数字字符不合法
+//                return false;
+//            }
+//            num = num * 10 + (s.charAt(i) - '0');
+//            if (num > 255) { // 如果⼤于255了不合法
+//                return false;
+//            }
+//        }
+//        return true;
+//    }
+//    public void DFS(String s,int startIndex,int splitSum){
+//        //注意一共只能分割三次
+//        if(splitSum == 3){
+//            if(isLegal(s,startIndex,s.length() - 1)){
+//                //对最后的一段进行合法判断
+//                StringBuilder stringBuilder = new StringBuilder();
+//                for(int i = 0;i < path.size();i++){
+//                     stringBuilder.append(path.get(i));
+//                     stringBuilder.append(".");
+//                }
+//                stringBuilder.append(s.substring(startIndex,s.length()));
+//                ret.add(stringBuilder.toString());
+//            }
+//            return ;
+//        }
+//
+//        for(int i = startIndex;i < s.length();i++){
+//            //分割后先判断是不是合法的 不是合法的就没有必要往下去递归
+//            //[startIndex,i] 分割出的区间
+//            if(isLegal(s,startIndex,i)){
+//                //是合法的
+//                path.add(s.substring(startIndex,i+1));//分割出来加入到path中
+//                splitSum++;//分割次数++
+//                DFS(s,i+1,splitSum);
+//                splitSum--;
+//                path.remove(path.size() - 1);
+//            }else{
+//                break;
+//            }
+//        }
+//    }
+//    public List<String> restoreIpAddresses(String s) {
+//        //这个题和分割回文串大同小异 都是分割问题
+//        DFS(s,0,0);
+//        return ret;
+//    }
+//}
+
+///////////////////////////////////
+//子集II
+//import java.util.*;
+//class Solution {
+//    List<Integer> path = new ArrayList<>();
+//    List<List<Integer>> ret = new ArrayList<>();
+//    Map<Integer,Boolean> map = new HashMap<>();
+//
+//    public void DFS(int[] nums,int startIndex){
+//        ret.add(new ArrayList<>(path));
+//        if(startIndex >= nums.length){
+//            return ;
+//        }
+//
+//        for(int i = startIndex;i < nums.length;i++){
+//            if(i > 0 && nums[i] == nums[i-1] && map.get(i-1) == false){
+//                continue;
+//            }
+//            path.add(nums[i]);
+//            map.put(i,true);
+//            DFS(nums,i + 1);//每次往下递归是在当前i的基础上往下递归 不是startIndex 注意！！！！！
+//            map.put(i,false);
+//            path.remove(path.size() - 1);
+//        }
+//    }
+//    public List<List<Integer>> subsetsWithDup(int[] nums) {
+//        //去重问题和组合总和II是一样的
+//        Arrays.sort(nums);
+//        for(int i = 0;i < nums.length;i++){
+//            map.put(i,false);
+//        }
+//        DFS(nums,0);
+//        return ret;
+//    }
+//}
+
+/////////////////////////////////////////////
+//递增子序列
+//import java.util.*;
+//
+//class Solution {
+//    public List<Integer> path = new ArrayList<>();
+//    public List<List<Integer>> ret = new ArrayList<>();
+//
+//    public void DFS(int[] nums,int startIndex){
+//        if(path.size() > 1){
+//            ret.add(new ArrayList<>(path));
+//        }
+//        if(startIndex == nums.length){
+//            return ;
+//        }
+//        Set<Integer> set = new HashSet<>();//用来保存本层已经使用过了哪些元素
+//        //其实定义全局的Map也是可以的 但是键的问题比较难搞
+//
+//        for(int i = startIndex;i < nums.length;i++){
+//            if((path.size() != 0 && nums[i] < path.get(path.size() - 1)) || set.contains(nums[i]) == true){
+//                //在path不是空的条件下 现在遍历到的新元素比path末尾元素小 则不满足递增条件 或者该元素在本层之前用过了
+//                continue;
+//            }
+//            path.add(nums[i]);
+//            set.add(nums[i]);
+//            DFS(nums,i+1);
+//            path.remove(path.size() - 1);
+//        }
+//
+//    }
+//
+//    public List<List<Integer>> findSubsequences(int[] nums) {
+//        //其实只选取nums中的递增元素的话 也就是求取一个递增数组的递增子序列 也就是子集II的问题
+//        DFS(nums,0);
+//        return ret;
+//    }
+//}
+
+
+/////////////////////////////////////////////////
+// 全排列II
+import java.util.*;
+class Solution {
+    public List<Integer> path = new ArrayList<>();
+    public List<List<Integer>> ret = new ArrayList<>();
+    public Map<Integer,Boolean> map = new HashMap<>();
+
+    public void DFS(int[] nums){
+        if(path.size() == nums.length){
+            ret.add(new ArrayList<>(path));
+            return ;
+        }
+        for(int i = 0;i < nums.length;i++){
+            if(i > 0 && nums[i] == nums[i-1] && map.get(i-1) == false){
+                continue; //同一层遇到重复的元素 进行剪枝
+            }
+            if(!map.get(i)){
+                path.add(nums[i]);
+                map.put(i,true);
+                DFS(nums);
+                map.put(i,false);
+                path.remove(path.size() - 1);
+            }
+        }
+    }
+
+    public List<List<Integer>> permuteUnique(int[] nums) {
+        Arrays.sort(nums);//排序让相同的元素挨在一起
+        for(int i = 0;i < nums.length;i++){
+            map.put(i,false);
+        }
+        DFS(nums);
+        return ret;
+    }
+}
+
+
+
