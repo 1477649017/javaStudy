@@ -13,10 +13,16 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class StudentBeans {
-    @Bean(name = {"stu1"})
-    //@Bean({"stu1","stu2"}) 简写方法
-    public Student getStudent(){
-        //这里是伪代码 真实是不会new对象的 一般是查询数据库返回对象
+    @Bean
+    public Student student1(){
+        Student stu = new Student();
+        stu.setId(1);
+        stu.setName("张三");
+        return stu;
+    }
+
+    @Bean
+    public Student student2(){
         Student stu = new Student();
         stu.setId(1);
         stu.setName("张三");

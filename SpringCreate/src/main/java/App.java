@@ -2,6 +2,8 @@ import Test.Student;
 import Test.test.AComponent;
 import Test.test.BController;
 import Test.test.Controller.StudentController;
+import Test.test.Controller.UserController1;
+import Test.test.Controller.UserController2;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.xml.XmlBeanFactory;
 import org.springframework.context.ApplicationContext;
@@ -65,10 +67,18 @@ public class App {
 //        System.out.println(student2);
     }
 
-    public static void main(String[] args) {
+    public static void main5(String[] args) {
         ApplicationContext applicationContext = new ClassPathXmlApplicationContext("SpringConfig.xml");
         StudentController studentController = applicationContext.getBean("studentController",StudentController.class);
-        studentController.sayHi();
+        studentController.func();
+    }
+
+    public static void main(String[] args) {
+        ApplicationContext context = new ClassPathXmlApplicationContext("SpringConfig.xml");
+        UserController1 userController1 = context.getBean("userController1",UserController1.class);
+        UserController2 userController2 = context.getBean("userController2",UserController2.class);
+        userController1.fun1();
+        userController2.fun2();
     }
 
 }
