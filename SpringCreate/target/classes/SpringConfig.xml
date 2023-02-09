@@ -4,4 +4,6 @@
        xmlns:content="http://www.springframework.org/schema/context"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
        <content:component-scan base-package="Test.test"></content:component-scan>
+<!--       <bean id="beanLifeComponent" class="Test.test.BeanLifeComponent" init-method="init" destroy-method="destory" ></bean>-->
+<!--       <bean id="myBeanPostProcessor" class="Test.test.MyBeanPostProcessor"></bean>-->
 </beans>

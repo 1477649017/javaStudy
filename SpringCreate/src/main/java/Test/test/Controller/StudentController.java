@@ -1,13 +1,8 @@
 package Test.test.Controller;
 import Test.Student;
-import Test.test.AComponent;
-import Test.test.Service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Controller;
-
-import javax.annotation.Resource;
 
 /**
  * Created with IntelliJ IDEA.

@@ -1,6 +1,6 @@
-import Test.Student;
-import Test.test.AComponent;
 import Test.test.BController;
+import Test.test.BeanLifeComponent;
+import Test.test.Component.AComponent;
 import Test.test.Controller.StudentController;
 import Test.test.Controller.UserController1;
 import Test.test.Controller.UserController2;
@@ -48,8 +48,8 @@ public class App {
         BController bController = beanFactory.getBean("Test.test.BController", BController.class);
         bController.func();
 
-        AComponent aComponent = beanFactory.getBean("Test.test.AComponent",AComponent.class);
-        aComponent.func();
+//        AComponent aComponent = beanFactory.getBean("Test.test.AComponent",AComponent.class);
+//        aComponent.func();
     }
 
     public static void main3(String[] args) {
@@ -73,12 +73,24 @@ public class App {
         studentController.func();
     }
 
-    public static void main(String[] args) {
+    public static void main6(String[] args) {
         ApplicationContext context = new ClassPathXmlApplicationContext("SpringConfig.xml");
         UserController1 userController1 = context.getBean("userController1",UserController1.class);
         UserController2 userController2 = context.getBean("userController2",UserController2.class);
         userController1.fun1();
         userController2.fun2();
+    }
+
+    public static void main7(String[] args) {
+        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("SpringConfig.xml");
+        BeanLifeComponent beanLifeComponent = context.getBean("beanLifeComponent",BeanLifeComponent.class);
+        System.out.println("使用Bean");
+        context.destroy();//为了能观察到Bean销毁的过程 这是直接将容器销毁
+    }
+
+    public static void main(String[] args) {
+        ApplicationContext context = new ClassPathXmlApplicationContext("SpringConfig.xml");
+        AComponent aComponent = context.getBean("AComponent",AComponent.class);
     }
 
 }
